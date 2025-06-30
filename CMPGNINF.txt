@@ -1,0 +1,6 @@
+
+{
+	mapname = zdwinv01
+	gamemode = invasion
+	wavelimit = 6
+}

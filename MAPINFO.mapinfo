@@ -1,0 +1,9 @@
+
+episode zdwinv01 { name = "ZDW Invasion" }
+
+map zdwinv01 "Dunno if this works"
+{
+music = "ZINVMUS1"
+next = "zdwinv01"
+sky1 = "SKY3"
+}

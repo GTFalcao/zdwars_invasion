@@ -1,0 +1,31 @@
+
+#include "actors/doom-monsters.dec"
+
+actor ZInvBaronSummonball : BaronSummonball replaces BaronSummonball {
+	states {
+		VanillaDeath:
+			SHEX A 1 A_SpawnItemEx(ZBaronofHell,0,0,0,0,0,0,0,SXF_ABSOLUTEVELOCITY | SXF_CLEARCALLERTID | SXF_TRANSFERPOINTERS, 0, CallACS("get new tid on spawn"))   
+			SHEX BCDE 1
+			goto ReimburseCheck
+	}
+}
+
+actor ZInvPinkySummonball : PinkySummonball replaces PinkySummonball {
+	states {
+		VanillaDeath:
+			SHEX A 1 A_SpawnItemEx(ZDemon,0,0,0,0,0,0,0,SXF_ABSOLUTEVELOCITY | SXF_CLEARCALLERTID | SXF_TRANSFERPOINTERS, 0, CallACS("get new tid on spawn"))   
+			SHEX BCDE 1
+			goto ReimburseCheck
+	}
+}
+
+actor ZInvSpectreSummonball : SpectrePinkySummonball replaces SpectrePinkySummonball {
+	states {
+		VanillaDeath:
+			SHEX A 1 A_SpawnItemEx(ZSpectre,0,0,0,0,0,0,0,SXF_ABSOLUTEVELOCITY | SXF_CLEARCALLERTID | SXF_TRANSFERPOINTERS, 0, CallACS("get new tid on spawn"))   
+			SHEX BCDE 1
+			goto ReimburseCheck
+	}
+}
+
+actor ImDefinitelyAPlayer : Inventory { inventory.maxamount 1 }
