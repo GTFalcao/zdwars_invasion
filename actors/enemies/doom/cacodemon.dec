@@ -3,6 +3,11 @@ actor ZEnemyCacodemon : Cacodemon {
 	species "ZInvEnemy"
 	bloodcolor "gold"
 	translation "192:207=160:167", "0:0=167:167", "112:127=160:167", "240:247=164:167", "16:47=112:127", "168:191=112:127"
+	painchance 75
+	meleerange 84
+	mass 800
+	health 450
+	+QUICKTORETALIATE
 	states {
 		Spawn:
 		Idle:
@@ -13,12 +18,13 @@ actor ZEnemyCacodemon : Cacodemon {
 			HEAD A 0 A_ClearTarget
 			goto Idle
 		See:
-			HEAD AAAAAAAAAAAAAAA 3 A_Chase
+			HEAD A 0 A_SpawnItemEx("GibbageFlying",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			HEAD AAAAAAAAAAAAAAAA 3 A_Chase
 			HEAD A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			loop
 		Missile:
 			HEAD BC 5 A_FaceTarget
-			HEAD D 5 Bright A_HeadAttack
+			HEAD D 5 Bright A_CustomComboAttack("ZEnemyCacodemonBall", 26, random(20, 30), "caco/attack", Normal, 1)
 			goto See
 		Pain:
 			HEAD E 3
@@ -28,6 +34,10 @@ actor ZEnemyCacodemon : Cacodemon {
 		Raise:
 			stop
 	}
+}
+
+actor ZEnemyCacodemonBall : CacodemonBall {
+	speed 20
 }
 
 actor CacodemonZSpawner : CustomMonsterInvasionSpot 16002

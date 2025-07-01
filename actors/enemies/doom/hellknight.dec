@@ -2,6 +2,10 @@ actor ZEnemyHellKnight : HellKnight {
   species "ZInvEnemy"
 	bloodcolor "gold"
 	translation "112:127=160:167", "151:151=246:246", "64:71=200:207", "72:79=240:247"
+	health 900
+	painchance 30
+	meleerange 72
+	+QUICKTORETALIATE
 	states {
 		Spawn:
 		Idle:
@@ -12,13 +16,20 @@ actor ZEnemyHellKnight : HellKnight {
 			BOS2 A 0 A_ClearTarget
 			goto Idle
 		See:
-			BOS2 AABBCCDDAABBCCDD 3 A_Chase
+			BOS2 A 0 A_SpawnItemEx("XBStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			BOS2 AABB 3 A_Chase
+			BOS2 C 0 A_SpawnItemEx("XBStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			BOS2 CCDD 3 A_Chase
+			BOS2 A 0 A_SpawnItemEx("XBStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			BOS2 AABB 3 A_Chase
+			BOS2 C 0 A_SpawnItemEx("XBStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			BOS2 CCDD 3 A_Chase
 			BOS2 A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			loop
     Melee:
 		Missile:
 			BOS2 EF 8 A_FaceTarget
-			BOS2 G 8 A_BruisAttack
+			BOS2 G 8 A_CustomComboAttack("ZEnemyKnightBall", 32, random(20,30), "baron/melee", Normal, 1)
 			goto See
 		Pain:
 			BOS2 H 2
@@ -27,6 +38,12 @@ actor ZEnemyHellKnight : HellKnight {
 		Raise:
 			stop
 	}
+}
+
+actor ZEnemyKnightBall : BaronBall {
+	speed 25
+	translation "112:127=162:167"
+	+THRUGHOST
 }
 
 actor HellKnightZSpawner : CustomMonsterInvasionSpot 16009

@@ -2,6 +2,10 @@ actor ZEnemyBaronOfHell : BaronOfHell {
   species "ZInvEnemy"
 	bloodcolor "gold"
 	translation "112:127=160:167", "48:63=200:207", "64:79=240:247"
+	health 1500
+	painchance 15
+	meleerange 78
+	+QUICKTORETALIATE
 	states {
 		Spawn:
 		Idle:
@@ -18,7 +22,7 @@ actor ZEnemyBaronOfHell : BaronOfHell {
     Melee:
 		Missile:
 			BOSS EF 8 A_FaceTarget
-			BOSS G 8 A_BruisAttack
+    	BOSS G 8 A_CustomComboAttack("ZEnemyBaronBall", 32, random(30,40), "baron/melee", Normal, 1)
 			goto See
 		Pain:
 			BOSS H 2
@@ -27,6 +31,11 @@ actor ZEnemyBaronOfHell : BaronOfHell {
 		Raise:
 			stop
 	}
+}
+
+actor ZEnemyBaronBall : ZEnemyKnightBall {
+	damage 10
+	-THRUGHOST
 }
 
 actor BaronOfHellZSpawner : CustomMonsterInvasionSpot 16006

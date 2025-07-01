@@ -2,8 +2,8 @@ actor ZEnemySpectre : ZEnemyDemon {
 	alpha 0.5
   renderstyle translucent
   +GHOST
-  +SHADOW
   HitObituary "$OB_SPECTREHIT"
+	health 225
 }
 
 actor SpectreZSpawner : CustomMonsterInvasionSpot 16013

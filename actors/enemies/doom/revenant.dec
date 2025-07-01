@@ -2,6 +2,10 @@ actor ZEnemyRevenant : Revenant {
 	species "ZInvEnemy"
 	bloodcolor "gold"
 	translation "32:47=160:167", "168:191=160:167"
+	meleerange 72
+	painchance 70
+	health 525
+	+QUICKTORETALIATE
 	states {
 		Spawn:
 		Idle:
@@ -9,30 +13,64 @@ actor ZEnemyRevenant : Revenant {
 			SKEL A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
 		ClearTarget:
-			SKEL A 0 A_ClearTarget
+			"####" A 0 A_ClearTarget
 			goto Idle
 		See:
-			SKEL AABBCCDDEEFFAABBCCDDEEFF 2 A_Chase
-			SKEL A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			"####" A 0 A_SpawnItemEx("XBoneStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			"####" AABBCC 2 A_Chase
+			"####" D 0 A_SpawnItemEx("XBoneStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			"####" DDEEFF 2 A_Chase
+			"####" A 0 A_SpawnItemEx("XBoneStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			"####" AABBCC 2 A_Chase
+			"####" D 0 A_SpawnItemEx("XBoneStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			"####" DDEEFF 2 A_Chase
+			"####" A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			loop
 		Melee:
-			SKEL G 0 A_FaceTarget
-			SKEL G 6 A_SkelWhoosh
-			SKEL H 6 A_FaceTarget
-			SKEL I 6 A_SkelFist
+			"####" G 0 A_FaceTarget
+			"####" G 6 A_SkelWhoosh
+			"####" H 6 A_FaceTarget
+			"####" I 6 A_CustomMeleeAttack(random(20,30), "skeleton/melee")
 			goto See
-    Missile:
-      SKEL J 0 Bright A_FaceTarget
-      SKEL J 10 Bright A_FaceTarget
-      SKEL K 10 A_SkelMissile
-      SKEL K 10 A_FaceTarget
-      goto See
+  Missile:
+			SKEL J 0 bright A_Jump(108,4)
+			SKEL J 10 bright A_FaceTarget
+			SKEL K 10 A_CustomMissile("RevMissile1", 48, 0, 0)
+			SKEL K 10 A_FaceTarget
+			goto See
+			SKEL J 10 bright A_FaceTarget
+			SKEL K 10 A_CustomMissile("RevMissile2", 48, 0, 0)
+			SKEL K 10 A_FaceTarget
+			goto See
 		Pain:
-			SKEL J 5
-			SKEL J 5 A_Pain
+			"####" J 5
+			"####" J 5 A_Pain
 			goto See
+		Death:
+			"####" LM 7
+			"####" N 7 A_Scream
+			"####" O 7 A_NoBlocking
+			"####" P 7
+			"####" Q -1
+			stop
 		Raise:
 			stop
+	}
+}
+
+actor ZEnemyRailRevenant : ZEnemyRevenant {	
+	states {
+		Spawn:
+		Idle:
+			RASK A 0
+			RASK A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Revenant::Spawn
+		Missile:
+			RASK J 10 bright A_FaceTarget
+			RASK K 8 A_CustomMissile("Revrailshot", 60, 0, random(-4,4),0)
+			RASK K 10 A_FaceTarget
+			RASK K 12 A_FaceTarget
+			goto See
 	}
 }
 
@@ -49,4 +87,19 @@ actor RevenantZSpawner : CustomMonsterInvasionSpot 16012
 	//$Arg2 Delay until first spawn
 	//$Arg3 Starts spawning in wave
 	//$Arg4 Maximum amount spawned
-} 
+}
+
+actor RailRevenantZSpawner : CustomMonsterInvasionSpot 16015
+{
+	dropitem "ZEnemyRailRevenant"
+	radius 20
+	height 56
+	//$Category ZInvasion Spawners
+	//$Sprite RASKA2D8
+	//$Title Rail Revenant
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
