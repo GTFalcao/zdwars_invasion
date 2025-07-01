@@ -1,0 +1,47 @@
+actor ZEnemySpiderMastermind : SpiderMastermind {
+	species "ZInvEnemy"
+	states {
+		Spawn:
+		Idle:
+			SPID A 0
+			SPID A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		ClearTarget:
+			SPID A 0 A_ClearTarget
+			goto Idle
+		See:
+			SPID A 3 A_Metal
+      SPID ABB 3 A_Chase
+      SPID C 3 A_Metal
+      SPID CDD 3 A_Chase
+      SPID E 3 A_Metal
+      SPID EFF 3 A_Chase
+			SPID A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			loop
+		Missile:
+			SPID A 20 Bright A_FaceTarget
+			SPID G 4 Bright A_SPosAttackUseAtkSound
+			SPID H 4 Bright A_SPosAttackUseAtkSound
+			SPID H 1 Bright A_SpidRefire
+			goto Missile+1
+		Pain:
+			SPID I 3
+			SPID I 3 A_Pain
+			goto See
+	}
+}
+
+actor SpiderMastermindZSpawner : CustomMonsterInvasionSpot 16014
+{
+	dropitem "ZEnemySpiderMastermind"
+	radius 128
+	height 100
+	//$Category ZInvasion Spawners
+	//$Sprite SPIDA2A8
+	//$Title Spider Mastermind
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+} 

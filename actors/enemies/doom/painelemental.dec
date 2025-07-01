@@ -1,0 +1,44 @@
+actor ZEnemyPainElemental : PainElemental {
+	species "ZInvEnemy"
+	states {
+		Spawn:
+		Idle:
+			PAIN A 0
+			PAIN A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		ClearTarget:
+			PAIN A 0 A_ClearTarget
+			goto Idle
+		See:
+			PAIN AABBCCBBAABBCCBB 3 A_Chase
+			PAIN A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			loop
+    Missile:
+      PAIN D 5 A_FaceTarget
+      PAIN E 5 A_FaceTarget
+      PAIN F 5 Bright A_FaceTarget
+      PAIN F 0 Bright A_PainAttack("ZEnemyLostSoul")
+      Goto See
+		Pain:
+			PAIN G 6 Bright
+			PAIN G 6 Bright A_Pain
+			goto See
+		Raise:
+			stop
+	}
+}
+
+actor PainElementalZSpawner : CustomMonsterInvasionSpot 16011
+{
+	dropitem "ZEnemyPainElemental"
+	radius 31
+	height 56
+	//$Category ZInvasion Spawners
+	//$Sprite PAINA2A8
+	//$Title Pain Elemental
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+} 

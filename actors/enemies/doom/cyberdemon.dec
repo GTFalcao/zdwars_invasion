@@ -32,8 +32,6 @@ actor ZEnemyCyberdemon : Cyberdemon {
 		Pain:
 			CYBR G 10 A_Pain
 			goto See
-		Raise:
-			stop
 	}
 }
 

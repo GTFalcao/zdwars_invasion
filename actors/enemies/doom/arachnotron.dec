@@ -12,20 +12,20 @@ actor ZEnemyArachnotron : Arachnotron {
 		See:
 			BSPI A 20
 			BSPI A 3 A_BabyMetal
-    BSPI ABBCC 3 A_Chase
-    BSPI D 3 A_BabyMetal
-    BSPI DEEFF 3 A_Chase
+			BSPI ABBCC 3 A_Chase
+			BSPI D 3 A_BabyMetal
+			BSPI DEEFF 3 A_Chase
 			BSPI A 3 A_BabyMetal
-    BSPI ABBCC 3 A_Chase
-    BSPI D 3 A_BabyMetal
-    BSPI DEEFF 3 A_Chase
+			BSPI ABBCC 3 A_Chase
+			BSPI D 3 A_BabyMetal
+			BSPI DEEFF 3 A_Chase
 			BSPI A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			goto See+1
 		Missile:
-    BSPI A 20 Bright A_FaceTarget
-    BSPI G 4 Bright A_BspiAttack
-    BSPI H 4 Bright
-    BSPI H 1 Bright A_SpidRefire
+			BSPI A 20 Bright A_FaceTarget
+			BSPI G 4 Bright A_BspiAttack
+			BSPI H 4 Bright
+			BSPI H 1 Bright A_SpidRefire
 			goto Missile+1
 		Pain:
 			BSPI I 3

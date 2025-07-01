@@ -1,0 +1,41 @@
+actor ZEnemyLostSoul : LostSoul {
+	species "ZInvEnemy"
+	states {
+		Spawn:
+		Idle:
+			SKUL A 0
+			SKUL A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		ClearTarget:
+			SKUL A 0 A_ClearTarget
+			goto Idle
+		See:
+			SKUL ABABABAB 6 Bright A_Chase
+			SKUL A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			loop
+  Missile:
+    SKUL C 10 Bright A_FaceTarget
+    SKUL D 4 Bright A_SkullAttack
+    SKUL CD 4 Bright
+    Goto Missile+2
+		Pain:
+			SKUL E 3 Bright
+			SKUL E 3 Bright A_Pain
+			goto See
+	}
+}
+
+actor LostSoulZSpawner : CustomMonsterInvasionSpot 16010
+{
+	dropitem "ZEnemyLostSoul"
+	radius 16
+	height 56
+	//$Category ZInvasion Spawners
+	//$Sprite SKULA2
+	//$Title Lost Soul
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+} 

@@ -1,0 +1,22 @@
+actor ZEnemySpectre : ZEnemyDemon {
+	alpha 0.5
+  renderstyle translucent
+  +GHOST
+  +SHADOW
+  HitObituary "$OB_SPECTREHIT"
+}
+
+actor SpectreZSpawner : CustomMonsterInvasionSpot 16013
+{
+	dropitem "ZEnemySpectre"
+	radius 30
+	height 56
+	//$Category ZInvasion Spawners
+	//$Sprite SARGA2A8
+	//$Title Spectre
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+} 
