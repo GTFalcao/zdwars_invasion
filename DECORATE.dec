@@ -1,31 +1,20 @@
 
-#include "actors/doom-monsters.dec"
+// Doom Monsters
+#include "actors/enemies/doom/imp.dec"
+#include "actors/enemies/doom/cacodemon.dec"
+#include "actors/enemies/doom/demon.dec"
+#include "actors/enemies/doom/arachnotron.dec"
+#include "actors/enemies/doom/baronofhell.dec"
+#include "actors/enemies/doom/cyberdemon.dec"
+#include "actors/enemies/doom/fatso.dec"
+#include "actors/enemies/doom/hellknight.dec"
+#include "actors/enemies/doom/lostsoul.dec"
+#include "actors/enemies/doom/painelemental.dec"
+#include "actors/enemies/doom/revenant.dec"
+#include "actors/enemies/doom/spectre.dec"
+#include "actors/enemies/doom/spidermastermind.dec"
 
-actor ZInvBaronSummonball : BaronSummonball replaces BaronSummonball {
-	states {
-		VanillaDeath:
-			SHEX A 1 A_SpawnItemEx(ZBaronofHell,0,0,0,0,0,0,0,SXF_ABSOLUTEVELOCITY | SXF_CLEARCALLERTID | SXF_TRANSFERPOINTERS, 0, CallACS("get new tid on spawn"))   
-			SHEX BCDE 1
-			goto ReimburseCheck
-	}
-}
-
-actor ZInvPinkySummonball : PinkySummonball replaces PinkySummonball {
-	states {
-		VanillaDeath:
-			SHEX A 1 A_SpawnItemEx(ZDemon,0,0,0,0,0,0,0,SXF_ABSOLUTEVELOCITY | SXF_CLEARCALLERTID | SXF_TRANSFERPOINTERS, 0, CallACS("get new tid on spawn"))   
-			SHEX BCDE 1
-			goto ReimburseCheck
-	}
-}
-
-actor ZInvSpectreSummonball : SpectrePinkySummonball replaces SpectrePinkySummonball {
-	states {
-		VanillaDeath:
-			SHEX A 1 A_SpawnItemEx(ZSpectre,0,0,0,0,0,0,0,SXF_ABSOLUTEVELOCITY | SXF_CLEARCALLERTID | SXF_TRANSFERPOINTERS, 0, CallACS("get new tid on spawn"))   
-			SHEX BCDE 1
-			goto ReimburseCheck
-	}
-}
+// Summonballs
+#include "actors/summonballs/doom.dec"
 
 actor ImDefinitelyAPlayer : Inventory { inventory.maxamount 1 }

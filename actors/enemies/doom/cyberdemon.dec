@@ -1,5 +1,7 @@
 actor ZEnemyCyberdemon : Cyberdemon {
   species "ZInvEnemy"
+	bloodcolor "gold"
+	translation "168:191=160:167", "48:63=200:207", "64:79=240:247", "144:151=200:207", "1:1=245:245"
   +DONTHARMSPECIES
 	states {
 		Spawn:

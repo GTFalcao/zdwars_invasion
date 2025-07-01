@@ -1,5 +1,7 @@
 actor ZEnemyArachnotron : Arachnotron {
   species "ZInvEnemy"
+	bloodcolor "gold"
+	translation "168:191=160:167", "192:207=160:167", "80:111=112:127", "16:47=160:167"
 	states {
 		Spawn:
 		Idle:

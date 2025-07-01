@@ -1,5 +1,7 @@
 actor ZEnemyLostSoul : LostSoul {
 	species "ZInvEnemy"
+	bloodcolor "gold"
+	translation "168:191=112:127", "208:231=112:127"
 	states {
 		Spawn:
 		Idle:

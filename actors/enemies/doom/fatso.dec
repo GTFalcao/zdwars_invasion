@@ -1,5 +1,7 @@
 actor ZEnemyFatso : Fatso {
   species "ZInvEnemy"
+	bloodcolor "gold"
+	translation "112:127=160:167", "16:47=160:167", "48:79=112:127", "168:191=160:167"
 	states {
 		Spawn:
 		Idle:

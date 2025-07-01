@@ -1,5 +1,7 @@
 actor ZEnemyBaronOfHell : BaronOfHell {
   species "ZInvEnemy"
+	bloodcolor "gold"
+	translation "112:127=160:167", "48:63=200:207", "64:79=240:247"
 	states {
 		Spawn:
 		Idle:

@@ -1,6 +1,8 @@
 
 actor ZEnemyCacodemon : Cacodemon {
-	translation "168:191=16:47", "16:47=112:127", "112:127=160:167"
+	species "ZInvEnemy"
+	bloodcolor "gold"
+	translation "192:207=160:167", "0:0=167:167", "112:127=160:167", "240:247=164:167", "16:47=112:127", "168:191=112:127"
 	states {
 		Spawn:
 		Idle:

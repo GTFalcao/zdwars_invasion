@@ -1,5 +1,7 @@
 actor ZEnemySpiderMastermind : SpiderMastermind {
 	species "ZInvEnemy"
+	bloodcolor "gold"
+	translation "48:79=112:127", "168:191=160:167", "128:143=120:127", "144:151=120:127"
 	states {
 		Spawn:
 		Idle:
