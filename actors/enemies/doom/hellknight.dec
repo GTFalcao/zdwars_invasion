@@ -35,7 +35,7 @@ actor HellKnightZSpawner : CustomMonsterInvasionSpot 16009
 	radius 24
 	height 64
 	//$Category ZInvasion Spawners
-	//$Sprite BOS2A2A8
+	//$Sprite BOS2A2C8
 	//$Title Hell Knight
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns

@@ -33,7 +33,7 @@ actor LostSoulZSpawner : CustomMonsterInvasionSpot 16010
 	radius 16
 	height 56
 	//$Category ZInvasion Spawners
-	//$Sprite SKULA2
+	//$Sprite SKULA2A8
 	//$Title Lost Soul
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
