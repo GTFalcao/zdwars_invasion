@@ -7,6 +7,8 @@ actor ZEnemyCacodemon : Cacodemon {
 	meleerange 84
 	mass 800
 	health 450
+  Dropitem "PinkMana", 256
+  Dropitem "PinkHeroMana", 256
 	+QUICKTORETALIATE
 	states {
 		Spawn:
@@ -21,6 +23,8 @@ actor ZEnemyCacodemon : Cacodemon {
 			HEAD A 0 A_SpawnItemEx("GibbageFlying",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
 			HEAD AAAAAAAAAAAAAAAA 3 A_Chase
 			HEAD A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			HEAD A 0 A_JumpIfTargetInLOS("See")
+			HEAD A 0 A_Jump(64, "ClearTarget")
 			loop
 		Missile:
 			HEAD BC 5 A_FaceTarget

@@ -5,6 +5,8 @@ actor ZEnemyHellKnight : HellKnight {
 	health 900
 	painchance 30
 	meleerange 72
+  Dropitem "BlueMana", 256
+  Dropitem "BlueHeroMana", 256
 	+QUICKTORETALIATE
 	states {
 		Spawn:
@@ -25,6 +27,8 @@ actor ZEnemyHellKnight : HellKnight {
 			BOS2 C 0 A_SpawnItemEx("XBStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
 			BOS2 CCDD 3 A_Chase
 			BOS2 A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			BOS2 A 0 A_JumpIfTargetInLOS("See")
+			BOS2 A 0 A_Jump(64, "ClearTarget")
 			loop
     Melee:
 		Missile:

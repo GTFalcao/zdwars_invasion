@@ -13,6 +13,8 @@ actor ZEnemySpiderMastermind : SpiderMastermind {
   +QUICKTORETALIATE
   +NODROPOFF
   +MISSILEEVENMORE
+  Dropitem "RedMana", 256
+  Dropitem "RedHeroMana", 256
 	states {
 		Spawn:
 		Idle:
@@ -29,7 +31,15 @@ actor ZEnemySpiderMastermind : SpiderMastermind {
       SPID CDD 3 A_Chase
       SPID E 3 A_Metal
       SPID EFF 3 A_Chase
+			SPID A 3 A_Metal
+      SPID ABB 3 A_Chase
+      SPID C 3 A_Metal
+      SPID CDD 3 A_Chase
+      SPID E 3 A_Metal
+      SPID EFF 3 A_Chase
 			SPID A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			SPID A 0 A_JumpIfTargetInLOS("See")
+			SPID A 0 A_Jump(64, "ClearTarget")
 			loop
 		Melee:
 		Missile:

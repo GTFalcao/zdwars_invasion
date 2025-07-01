@@ -5,6 +5,8 @@ actor ZEnemyArachnotron : Arachnotron {
 	health 800
 	painchance 20
 	+QUICKTORETALIATE
+  Dropitem "BlueMana", 256
+  Dropitem "BlueHeroMana", 256
 	states {
 		Spawn:
 		Idle:
@@ -25,6 +27,8 @@ actor ZEnemyArachnotron : Arachnotron {
 			BSPI D 3 A_BabyMetal
 			BSPI DEEFF 3 A_Chase
 			BSPI A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			BSPI A 0 A_JumpIfTargetInLOS("See")
+			BSPI A 0 A_Jump(64, "ClearTarget")
 			goto See+1
 		Missile:
 			BSPI A 20 Bright A_FaceTarget
