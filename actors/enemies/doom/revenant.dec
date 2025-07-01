@@ -26,7 +26,7 @@ actor ZEnemyRevenant : Revenant {
       SKEL J 10 Bright A_FaceTarget
       SKEL K 10 A_SkelMissile
       SKEL K 10 A_FaceTarget
-      goto See;
+      goto See
 		Pain:
 			SKEL J 5
 			SKEL J 5 A_Pain

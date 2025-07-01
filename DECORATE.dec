@@ -14,7 +14,4 @@
 #include "actors/enemies/doom/spectre.dec"
 #include "actors/enemies/doom/spidermastermind.dec"
 
-// Summonballs
-#include "actors/summonballs/doom.dec"
-
 actor ImDefinitelyAPlayer : Inventory { inventory.maxamount 1 }
