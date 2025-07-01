@@ -80,7 +80,7 @@ actor ZEnemySpiderShot : Spidershot {
 	}
 }
 
-actor ZEnemySpiderShot2 : ZEnemySpiderShot2 {
+actor ZEnemySpiderShot2 : ZEnemySpiderShot {
 	speed 100
 }
 

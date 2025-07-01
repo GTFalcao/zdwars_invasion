@@ -33,9 +33,10 @@ actor ZEnemyBaronOfHell : BaronOfHell {
 	}
 }
 
-actor ZEnemyBaronBall : ZEnemyKnightBall {
-	damage 10
-	-THRUGHOST
+actor ZEnemyBaronBall : BaronBall {
+	damage 11
+	speed 25
+	translation "112:127=162:167"
 }
 
 actor BaronOfHellZSpawner : CustomMonsterInvasionSpot 16006

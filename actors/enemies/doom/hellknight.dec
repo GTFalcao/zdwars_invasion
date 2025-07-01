@@ -40,9 +40,8 @@ actor ZEnemyHellKnight : HellKnight {
 	}
 }
 
-actor ZEnemyKnightBall : BaronBall {
-	speed 25
-	translation "112:127=162:167"
+actor ZEnemyKnightBall : ZEnemyBaronBall {
+	damage 8
 	+THRUGHOST
 }
 
