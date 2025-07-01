@@ -7,14 +7,14 @@ actor ZEnemyCacodemon : Cacodemon {
 			HEAD A 0
 			HEAD A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
+		ClearTarget:
+			HEAD A 0 A_ClearTarget
+			goto Idle
 		See:
 			HEAD AAAAAAAAAAAAAAA 3 A_Chase
 			HEAD A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			loop
-		ClearTarget:
-			HEAD A 0 A_ClearTarget
-			goto Idle
-		 Missile:
+		Missile:
 			HEAD BC 5 A_FaceTarget
 			HEAD D 5 Bright A_HeadAttack
 			goto See
@@ -26,7 +26,7 @@ actor ZEnemyCacodemon : Cacodemon {
 	}
 }
 
-actor CacodemonZSpawner : CustomMonsterInvasionSpot 16003
+actor CacodemonZSpawner : CustomMonsterInvasionSpot 16002
 {
 	dropitem "ZEnemyCacodemon"
 	radius 31
