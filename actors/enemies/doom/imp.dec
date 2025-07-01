@@ -1,0 +1,43 @@
+
+actor ZEnemyImp : DoomImp {
+	translation "48:79=112:127", "168:191=160:167"
+  bloodcolor "gold"
+	states {
+		Spawn:
+		Idle:
+			TROO A 0
+			TROO A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		See:
+			TROO AABBCCDDAABBCCDD 3 A_Chase
+			TROO A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			loop
+		ClearTarget:
+			TROO A 0 A_ClearTarget
+			goto Idle
+		Melee:
+	  Missile:
+			TROO EF 8 A_FaceTarget
+			TROO G 6 A_TroopAttack
+			goto See
+		Pain:
+			TROO H 2
+			TROO H 2 A_Pain
+			goto See
+	}
+}
+
+actor ImpZSpawner : CustomMonsterInvasionSpot 16003
+{
+	dropitem "ZEnemyImp"
+	radius 20
+	height 56
+	//$Category ZInvasion Spawners
+	//$Sprite TROOA2A8
+	//$Title Imp
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}

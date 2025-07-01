@@ -1,40 +1,6 @@
 
-actor ZEnemyDoomImp : DoomImp { }
-
-actor ImpZSpawner : CustomMonsterInvasionSpot 16001
-{
-	dropitem "ZEnemyDoomImp"
-	radius 20
-	height 56
-	//$Category ZInvasion Spawners
-	//$Sprite TROOA2A8
-	//$Title Imp
-	//$Arg0 Minimum amount spawned
-	//$Arg1 Delay between spawns
-	//$Arg2 Delay until first spawn
-	//$Arg3 Starts spawning in wave
-	//$Arg4 Maximum amount spawned
-}
-
-actor ZEnemyDemon : Demon {
-}
-
-actor DemonZSpawner : CustomMonsterInvasionSpot 16002
-{
-	dropitem "ZEnemyDemon"
-	radius 30
-	height 56
-	//$Category ZInvasion Spawners
-	//$Sprite SARGA2A8
-	//$Title Demon
-	//$Arg0 Minimum amount spawned
-	//$Arg1 Delay between spawns
-	//$Arg2 Delay until first spawn
-	//$Arg3 Starts spawning in wave
-	//$Arg4 Maximum amount spawned
-}
-
 actor ZEnemyCacodemon : Cacodemon {
+	translation "168:191=16:47", "16:47=112:127", "112:127=160:167"
 	states {
 		Spawn:
 		Idle:
@@ -42,7 +8,7 @@ actor ZEnemyCacodemon : Cacodemon {
 			HEAD A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
 		See:
-			HEAD AAAAAAAAAA 3 A_Chase
+			HEAD AAAAAAAAAAAAAAA 3 A_Chase
 			HEAD A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			loop
 		ClearTarget:
