@@ -16,7 +16,6 @@ script "populate that tid array" open {
 
 script "get new tid on spawn" (int type, int arg1, int arg2) event {
   if (type == GAMEEVENT_ACTOR_SPAWNED && CheckFlag(0, "ISMONSTER") && !(CheckActorProperty(0, APROP_Species, "ZInvEnemy"))) {
-    ActivatorSound("cyber/sight", 127);
     Thing_ChangeTID(0, startTid + tidCounter);
     if (++tidCounter >= maxTids) {
       tidCounter = 0;

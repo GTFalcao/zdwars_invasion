@@ -4,3 +4,9 @@
 	gamemode = invasion
 	wavelimit = 6
 }
+
+{
+	mapname = zdwinv17
+	gamemode = invasion
+	wavelimit = 5
+}

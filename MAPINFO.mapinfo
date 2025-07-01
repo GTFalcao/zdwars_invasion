@@ -8,6 +8,14 @@ next = "zdwinv01"
 sky1 = "SKY3"
 }
 
+map ZDWINV17 "The Flame Temple"
+{
+sky1 = "SKY_F001"
+music = "ZDWARS17"
+next = "ZDWINV17"
+aircontrol = 0.4
+}
+
 GameInfo
 {
     ForceSpawnEventScripts = true
