@@ -25,9 +25,7 @@ actor ZEnemyImp : DoomImp {
 			TROO H 2 A_Pain
 			goto See
     Raise:
-			TROO ML 8
-			TROO KJI 6
-			goto See
+			stop
 	}
 }
 

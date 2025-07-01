@@ -23,6 +23,8 @@ actor ZEnemyCacodemon : Cacodemon {
 			HEAD E 3 A_Pain
 			HEAD F 6
 			goto See
+		Raise:
+			stop
 	}
 }
 
