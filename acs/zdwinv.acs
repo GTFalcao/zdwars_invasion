@@ -1,0 +1,61 @@
+#include "zcommon.acs"
+
+int maxTids = 80;
+int tidsToPick[80]; // ACS pls
+int tidCounter = 0;
+int startTid = -400;
+
+bool everythingIsDead = false;
+
+script "populate that tid array" open {
+	for (int rid = 0; rid < maxTids; rid++) {
+		tidsToPick[maxTids] = startTid + rid;
+	}
+}
+
+script "get new tid on spawn" (int type, int arg1, int arg2) event {
+  if (type == GAMEEVENT_ACTOR_SPAWNED && CheckFlag(0, "ISMONSTER") && !(CheckActorProperty(0, APROP_Species, "ZInvEnemy"))) {
+    ActivatorSound("cyber/sight", 127);
+    Thing_ChangeTID(0, startTid + tidCounter);
+    if (++tidCounter >= maxTids) {
+      tidCounter = 0;
+    }
+  }
+
+}
+
+script "hate something new" (void) {
+	if (everythingIsDead == true) terminate;
+	// find a random tid
+	int tidToHate = startTid + random(0, maxTids - 1);
+	int counter = 0;
+
+	// if there is no target, increment the tid
+	while (ThingCount(T_NONE, tidToHate) == 0) {
+		// but no more than [maxTids] times
+		if (++counter > maxTids) {
+			// so if no live target is found, wait some time before checking again
+			// (performance consideration)
+			everythingIsDead = true;
+			Delay(35 * 10);
+			everythingIsDead = false;
+
+			terminate;
+		}
+
+		// wrap around to startTid if the highest one is reached
+		if (++tidToHate >= (startTid + maxTids)) {
+			tidToHate = startTid;
+		}
+	}
+
+	PrintBold(s:"hating tid ", i:tidToHate);
+	Thing_Hate(0, tidToHate, 4);
+}
+
+script "look i am a player" enter {
+	GiveInventory("ImDefinitelyAPlayer", 1);
+}
+script "even if i die" respawn {
+	GiveInventory("ImDefinitelyAPlayer", 1);
+}
