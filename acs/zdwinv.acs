@@ -51,9 +51,92 @@ script "hate something new" (void) {
 	Thing_Hate(0, tidToHate, 4);
 }
 
-script "look i am a player" enter {
+bool suddenDeath = false;
+
+script "sudden death enter" enter {
 	GiveInventory("ImDefinitelyAPlayer", 1);
+
+	while (!suddenDeath) {
+		Delay(100);
+	}
+
+	int counter = 0;
+	while (GetActorProperty(0, APROP_Health) > 0) {
+		Delay(32);
+		DamageThing(++counter, MOD_POISON);
+	}
 }
-script "even if i die" respawn {
+script "sudden death respawn" respawn {
 	GiveInventory("ImDefinitelyAPlayer", 1);
+
+	while (!suddenDeath) {
+		Delay(100);
+	}
+
+	int counter = 0;
+	while (GetActorProperty(0, APROP_Health) > 0) {
+		Delay(32);
+		DamageThing(++counter, MOD_POISON);
+	}
+}
+
+
+// tag 172 to spawn only for 2+ players
+// tag 173 to spawn only for 3+ players
+// tag 174 to spawn only for 4+ players
+script "invasion spawner scaling and timer" open {
+	suddenDeath = false;
+	while((GetInvasionState() != IS_FIRSTCOUNTDOWN))
+    Delay(20);
+
+	Delay(35 * (GetCVar("sv_invasioncountdowntime") - 1));
+
+	int amountPlayers = PlayerCount();
+
+	PrintBold(s:"Invasion difficulty set for \cv",i:amountPlayers,s: " players");
+
+	if (amountPlayers < 4) {
+		Thing_Remove(174);
+		if (amountPlayers < 3) {
+			Thing_Remove(173);
+			if (amountPlayers < 2) {
+				Thing_Remove(172);
+			}
+		}
+	}
+
+	// only enable sudden death if sv_maxlives is set
+	if (!GetCVar("sv_maxlives")) terminate;
+
+	int timelimit = GetCVar("timelimit");
+	if (timelimit >= 65536) timelimit >>= 16;
+	if (timelimit < 30 || timelimit > 120) timelimit = 6;
+
+	Delay (35 * 60 * (timelimit - 5));
+	
+	AmbientSound("announcer/5cp/fiveminutewarning", 127);
+
+	PrintBold(s:"Sudden death begins in 5 minutes!");
+
+	Delay(35 * 60 * 4);
+
+	AmbientSound("announcer/5cp/oneminutewarning", 127);
+
+	PrintBold(s:"Sudden death begins in 1 minute!");
+
+	Delay(35 * 60);
+
+	PrintBold(s:"Sudden death!");
+	AmbientSound("announcer/5cp/five", 127);
+	Delay(35);
+	AmbientSound("announcer/5cp/four", 127);
+	Delay(35);
+	AmbientSound("announcer/5cp/three", 127);
+	Delay(35);
+	AmbientSound("announcer/5cp/two", 127);
+	Delay(35);
+	AmbientSound("announcer/5cp/one", 127);
+	Delay(50);
+
+	suddenDeath = true;
 }

@@ -4,6 +4,7 @@
   "description": "ZDoom Wars mod",
   "main": "package.js",
   "scripts": {
+    "acc": "cd acc && acc.exe ../acs/zdwinv.acs ../acs/zdwinv.o",
     "build": "node package.js dist"
   },
   "dependencies": {

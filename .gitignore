@@ -1,4 +1,5 @@
 dist/
+acc/
 package-lock.json
 node_modules/
 maps/*.autosave*
