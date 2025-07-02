@@ -5,7 +5,7 @@ actor ZEnemySpiderMastermind : SpiderMastermind {
 	health 4750
 	mass 6000
 	radius 90
-	painchance 5
+	painchance 4
   Damagefactor "Annihilate", 0
   Damagefactor "Ridiculous", 0.6
 	+DONTRIP

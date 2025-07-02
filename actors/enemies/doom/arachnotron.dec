@@ -3,7 +3,8 @@ actor ZEnemyArachnotron : Arachnotron {
 	bloodcolor "gold"
 	translation "168:191=160:167", "192:207=160:167", "80:111=112:127", "16:47=160:167"
 	health 800
-	painchance 20
+	painchance 15
+	radius 48
 	+QUICKTORETALIATE
   Dropitem "BlueMana", 256
   Dropitem "BlueHeroMana", 256
@@ -52,7 +53,7 @@ actor ZEnemyArachnotron : Arachnotron {
 actor ArachnotronZSpawner : CustomMonsterInvasionSpot 16004
 {
 	dropitem "ZEnemyArachnotron"
-	radius 64
+	radius 48
 	height 64
 	//$Category ZInvasion Spawners
 	//$Sprite BSPIA2A8
