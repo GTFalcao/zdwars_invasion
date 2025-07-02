@@ -38,7 +38,7 @@ actor ZEnemyDemon : Demon {
 			SARG CCDD 2 A_Chase
 			SARG A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			SARG A 0 A_JumpIfTargetInLOS("See")
-			SARG A 0 A_Jump(64, "ClearTarget")
+			SARG A 0 A_Jump(128, "ClearTarget")
 			loop
 		Melee:
 			SARG EF 8 A_FaceTarget

@@ -1,0 +1,92 @@
+actor ZEnemyOphidian : Snake {
+	species "ZInvEnemy"
+	bloodcolor "darkblue"
+  translation "0:255=%[0,0,0]:[0.20,0.20,0.90]"
+	health 850
+	painchance 16
+	speed 10
+	+QUICKTORETALIATE
+  +MISSILEMORE
+	Dropitem "BlueMana", 256
+	Dropitem "BlueHeroMana", 256
+  Dropitem "ZArtiInvisibility", 80
+	states {
+		Spawn:
+			SNKE A 0
+		Idle:
+			SNKE A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		IdleQuiet:
+			SNKE A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			SNKE AB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
+		ClearTarget:
+			SNKE A 0 A_ClearTarget
+			goto IdleQuiet
+		See:
+			SNKE A 0 A_SpawnItemEx("WingFlapHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SNKE AB 4 A_Chase
+			SNKE C 0 A_SpawnItemEx("WingFlapHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SNKE CD 4 A_Chase
+			SNKE A 0 A_SpawnItemEx("WingFlapHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SNKE AB 4 A_Chase
+			SNKE C 0 A_SpawnItemEx("WingFlapHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SNKE CD 4 A_Chase
+			SNKE A 0 A_SpawnItemEx("WingFlapHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SNKE AB 4 A_Chase
+			SNKE C 0 A_SpawnItemEx("WingFlapHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SNKE CD 4 A_Chase
+			SNKE A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			SNKE A 0 A_JumpIfTargetInLOS("See")
+			SNKE A 0 A_Jump(128, "ClearTarget")
+			loop
+		Missile:
+			SNKE FF 5 A_FaceTarget
+			SNKE FFF 4 A_CustomMissile("ZSnakePojA", 32, 0, 0, CMF_CHECKTARGETDEAD)
+			SNKE FFF 5 A_FaceTarget
+			SNKE F 4 A_CustomMissile("ZSnakePojB", 32, 0, 0, CMF_CHECKTARGETDEAD)
+			goto See
+		Pain:
+			SNKE E 3
+			SNKE E 3 A_Pain
+			goto See
+		Raise:
+			stop
+	}
+}
+
+actor ZEnemyGhostOphidian : ZEnemyOphidian {
+  +GHOST
+  renderstyle translucent
+  alpha 0.5
+}
+
+actor OphidianZSpawner : CustomMonsterInvasionSpot 16016
+{
+	dropitem "ZEnemyOphidian"
+	radius 22
+	height 70
+	//$Category ZInvasion Spawners
+	//$Sprite SNKEA2
+	//$Title Ophidian
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
+
+actor GhostOphidianZSpawner : CustomMonsterInvasionSpot 16017
+{
+	dropitem "ZEnemyGhostOphidian"
+	radius 22
+	height 70
+	//$Category ZInvasion Spawners
+	//$Sprite SNKEF2
+	//$Title Ghost Ophidian
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}

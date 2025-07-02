@@ -33,7 +33,7 @@ actor ZEnemyArachnotron : Arachnotron {
 			BSPI DEEFF 3 A_Chase
 			BSPI A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			BSPI A 0 A_JumpIfTargetInLOS("See")
-			BSPI A 0 A_Jump(64, "ClearTarget")
+			BSPI A 0 A_Jump(128, "ClearTarget")
 			goto See+1
 		Missile:
 			BSPI A 20 Bright A_FaceTarget

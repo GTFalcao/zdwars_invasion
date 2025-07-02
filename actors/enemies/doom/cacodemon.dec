@@ -28,7 +28,7 @@ actor ZEnemyCacodemon : Cacodemon {
 			HEAD AAAAAAAAAAAAAAAA 3 A_Chase
 			HEAD A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
 			HEAD A 0 A_JumpIfTargetInLOS("See")
-			HEAD A 0 A_Jump(64, "ClearTarget")
+			HEAD A 0 A_Jump(128, "ClearTarget")
 			loop
 		Missile:
 			HEAD BC 5 A_FaceTarget

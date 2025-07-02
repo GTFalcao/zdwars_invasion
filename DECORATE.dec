@@ -14,4 +14,7 @@
 #include "actors/enemies/doom/spectre.dec"
 #include "actors/enemies/doom/spidermastermind.dec"
 
+// Heretic Monsters
+#include "actors/enemies/heretic/ophidian.dec"
+
 actor ImDefinitelyAPlayer : Inventory { inventory.maxamount 1 }

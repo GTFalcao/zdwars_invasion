@@ -5,3 +5,4 @@ node_modules/
 maps/*.autosave*
 maps/*.backup*
 maps/*.dbs
+.cursor
