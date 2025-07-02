@@ -71,7 +71,7 @@ filesToInclude.forEach(item => {
                 const files = fs.readdirSync(itemPath);
                 files.forEach(file => {
                     // Exclude files that contain 'autosave' in the name
-                    if (!file.toLowerCase().includes('autosave')) {
+                    if (!file.toLowerCase().match(/backup|autosave/)) {
                         const filePath = path.join(itemPath, file);
                         const fileStats = fs.statSync(filePath);
                         

@@ -12,13 +12,17 @@ actor ZEnemyDemon : Demon {
   Dropitem "GreenHeroMana", 256
 	states {
 		Spawn:
-		Idle:
 			SARG A 0
+		Idle:
 			SARG A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
+		IdleQuiet:
+			SARG A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			SARG AB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
 		ClearTarget:
 			SARG A 0 A_ClearTarget
-			goto Idle
+			goto IdleQuiet
 		See:
 			SARG A 0 A_SpawnItemEx("XF2StepLowTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
 			SARG AABB 2 A_Chase

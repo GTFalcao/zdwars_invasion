@@ -9,13 +9,17 @@ actor ZEnemyFatso : Fatso {
   Dropitem "BlueHeroMana", 256
 	states {
 		Spawn:
-		Idle:
 			FATT A 0
+		Idle:
 			FATT A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
+		IdleQuiet:
+			FATT A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			FATT AB 15 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
 		ClearTarget:
 			FATT A 0 A_ClearTarget
-			goto Idle
+			goto IdleQuiet
 		See:
 			FATT A 0 A_SpawnItemEx("XBStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
 			FATT AABBCC 4 A_Chase

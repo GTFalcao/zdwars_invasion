@@ -11,13 +11,17 @@ actor ZEnemyImp : DoomImp {
   Dropitem "GreenHeroMana", 256
 	states {
 		Spawn:
-		Idle:
 			TROO A 0
+		Idle:
 			TROO A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
+		IdleQuiet:
+			TROO A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			TROO AB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
 		ClearTarget:
 			TROO A 0 A_ClearTarget
-			goto Idle
+			goto IdleQuiet
 		See:
 			TROO AABBCCDDAABBCCDD 3 A_Chase
 			TROO A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")

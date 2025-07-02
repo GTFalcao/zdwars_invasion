@@ -10,13 +10,17 @@ actor ZEnemyRevenant : Revenant {
   Dropitem "BlueHeroMana", 256
 	states {
 		Spawn:
-		Idle:
 			SKEL A 0
+		Idle:
 			SKEL A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
+		IdleQuiet:
+			"####" A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			"####" AB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
 		ClearTarget:
 			"####" A 0 A_ClearTarget
-			goto Idle
+			goto IdleQuiet
 		See:
 			"####" A 0 A_SpawnItemEx("XBoneStepHiTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
 			"####" AABBCC 2 A_Chase
@@ -65,11 +69,11 @@ actor ZEnemyRevenant : Revenant {
 actor ZEnemyRailRevenant : ZEnemyRevenant {	
 	states {
 		Spawn:
-		Idle:
 			RASK A 0
+		Idle:
 			RASK A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			RASK AB 10 A_Look
-			goto Idle+2
+			goto Idle+1
 		Missile:
 			RASK J 10 bright A_FaceTarget
 			RASK K 8 A_CustomMissile("Revrailshot", 60, 0, random(-4,4),0)

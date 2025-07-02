@@ -10,13 +10,17 @@ actor ZEnemyBaronOfHell : BaronOfHell {
 	+QUICKTORETALIATE
 	states {
 		Spawn:
-		Idle:
 			BOSS A 0
+		Idle:
 			BOSS A 0 ACS_NamedExecuteAlways("hate something new", 0)
 			goto Super::Spawn
+		IdleQuiet:
+			BOSS A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			BOSS AB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
 		ClearTarget:
 			BOSS A 0 A_ClearTarget
-			goto Idle
+			goto IdleQuiet
 		See:
 			BOSS AABBCCDDAABBCCDD 3 A_Chase
 			BOSS A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
@@ -26,7 +30,7 @@ actor ZEnemyBaronOfHell : BaronOfHell {
     Melee:
 		Missile:
 			BOSS EF 8 A_FaceTarget
-    	BOSS G 8 A_CustomComboAttack("ZEnemyBaronBall", 32, random(30,40), "baron/melee", Normal, 1)
+			BOSS G 8 A_CustomComboAttack("ZEnemyBaronBall", 32, random(30,40), "baron/melee", Normal, 1)
 			goto See
 		Pain:
 			BOSS H 2
