@@ -68,7 +68,8 @@ actor ZEnemyRailRevenant : ZEnemyRevenant {
 		Idle:
 			RASK A 0
 			RASK A 0 ACS_NamedExecuteAlways("hate something new", 0)
-			goto Revenant::Spawn
+			RASK AB 10 A_Look
+			goto Idle+2
 		Missile:
 			RASK J 10 bright A_FaceTarget
 			RASK K 8 A_CustomMissile("Revrailshot", 60, 0, random(-4,4),0)

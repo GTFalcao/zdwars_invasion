@@ -1,0 +1,14 @@
+{
+  "name": "doom_zdwars_invasion",
+  "version": "0.0.2",
+  "description": "ZDoom Wars mod",
+  "main": "package.js",
+  "scripts": {
+    "build": "node package.js dist"
+  },
+  "dependencies": {
+    "archiver": "^6.0.1"
+  },
+  "author": "SwordGrunt",
+  "license": "ISC"
+}
