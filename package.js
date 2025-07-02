@@ -65,8 +65,31 @@ filesToInclude.forEach(item => {
         const stats = fs.statSync(itemPath);
         
         if (stats.isDirectory()) {
-            console.log(`📂 Adding directory: ${item}`);
-            archive.directory(itemPath, item);
+            // Special handling for maps directory to exclude autosave files
+            if (item === 'maps/') {
+                console.log(`📂 Adding directory: ${item} (filtering autosave files)`);
+                const files = fs.readdirSync(itemPath);
+                files.forEach(file => {
+                    // Exclude files that contain 'autosave' in the name
+                    if (!file.toLowerCase().includes('autosave')) {
+                        const filePath = path.join(itemPath, file);
+                        const fileStats = fs.statSync(filePath);
+                        
+                        if (fileStats.isFile()) {
+                            console.log(`  📄 Adding map file: ${file}`);
+                            archive.file(filePath, { name: `maps/${file}` });
+                        } else if (fileStats.isDirectory()) {
+                            console.log(`  📂 Adding map subdirectory: ${file}`);
+                            archive.directory(filePath, `maps/${file}`);
+                        }
+                    } else {
+                        console.log(`  ⏭️  Skipping autosave file: ${file}`);
+                    }
+                });
+            } else {
+                console.log(`📂 Adding directory: ${item}`);
+                archive.directory(itemPath, item);
+            }
         } else {
             console.log(`📄 Adding file: ${item}`);
             archive.file(itemPath, { name: item });
