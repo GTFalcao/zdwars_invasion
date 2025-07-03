@@ -10,6 +10,7 @@ actor ZEnemyOphidian : Snake {
 	Dropitem "BlueMana", 256
 	Dropitem "BlueHeroMana", 256
   Dropitem "ZArtiInvisibility", 80
+  var int user_healthbarid;
 	states {
 		Spawn:
 			SNKE A 0

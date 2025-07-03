@@ -8,6 +8,7 @@ actor ZEnemyRevenant : Revenant {
 	+QUICKTORETALIATE
   Dropitem "BlueMana", 256
   Dropitem "BlueHeroMana", 256
+  var int user_healthbarid;
 	states {
 		Spawn:
 			SKEL A 0

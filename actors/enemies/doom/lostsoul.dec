@@ -6,6 +6,7 @@ actor ZEnemyLostSoul : LostSoul {
   Damagefactor "Suppression2", 1.3
 	-COUNTKILL
 	damage 0
+  var int user_healthbarid;
 	states {
 		Spawn:
 			SKUL A 0

@@ -15,6 +15,7 @@ actor ZEnemySpiderMastermind : SpiderMastermind {
   +MISSILEEVENMORE
   Dropitem "RedMana", 256
   Dropitem "RedHeroMana", 256
+  var int user_healthbarid;
 	states {
 		Spawn:
 			SPID A 0

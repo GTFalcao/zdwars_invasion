@@ -10,6 +10,7 @@ actor ZEnemyCacodemon : Cacodemon {
   Dropitem "PinkMana", 256
   Dropitem "PinkHeroMana", 256
 	+QUICKTORETALIATE
+  var int user_healthbarid;
 	states {
 		Spawn:
 			HEAD A 0

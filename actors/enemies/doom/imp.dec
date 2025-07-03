@@ -9,6 +9,7 @@ actor ZEnemyImp : DoomImp {
   +QUICKTORETALIATE
   Dropitem "GreenMana", 256
   Dropitem "GreenHeroMana", 256
+  var int user_healthbarid;
 	states {
 		Spawn:
 			TROO A 0

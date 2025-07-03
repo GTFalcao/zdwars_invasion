@@ -9,6 +9,7 @@ actor ZEnemyDisciple : Wizard {
 	Dropitem "GreenMana", 256
 	Dropitem "GreenHeroMana", 256
   Dropitem "ZArtiInvisibility", 4
+  var int user_healthbarid;
 	states {
 		Spawn:
 			WZRD A 0

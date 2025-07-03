@@ -11,6 +11,7 @@ actor ZEnemyWeredragon : Beast {
   Dropitem "BlueMana", 256
   Dropitem "BlueHeroMana", 256
   Dropitem "ZArtiInvisibility", 80
+  var int user_healthbarid;
 	states {
 		Spawn:
 			BEAS A 0
@@ -103,7 +104,7 @@ actor GhostWeredragonZSpawner : CustomMonsterInvasionSpot 16022 {
   radius 32
   height 74
   //$Category ZInvasion Spawners
-  //$Sprite BEASA8A2
+  //$Sprite BEASH2H8
   //$Title Ghost Weredragon
   //$Arg0 Minimum amount spawned
   //$Arg1 Delay between spawns
@@ -118,7 +119,7 @@ actor BarrageWeredragonZSpawner : CustomMonsterInvasionSpot 16023
 	radius 32
 	height 74
 	//$Category ZInvasion Spawners
-	//$Sprite BEASA8A2
+	//$Sprite BARGC8C2
 	//$Title Barrage Weredragon
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
@@ -132,7 +133,7 @@ actor GhostBarrageWeredragonZSpawner : CustomMonsterInvasionSpot 16024 {
   radius 32
   height 74
   //$Category ZInvasion Spawners
-  //$Sprite BEASA8A2
+  //$Sprite BARGI8I2
   //$Title Ghost Barrage Weredragon
   //$Arg0 Minimum amount spawned
   //$Arg1 Delay between spawns

@@ -9,6 +9,7 @@ actor ZEnemyUndeadKnight : Knight {
 	Dropitem "PinkMana", 256
 	Dropitem "PinkHeroMana", 256
   Dropitem "ZArtiInvisibility", 28
+  var int user_healthbarid;
 	states {
 		Spawn:
 			KNIG A 0

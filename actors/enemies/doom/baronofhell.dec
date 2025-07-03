@@ -8,6 +8,7 @@ actor ZEnemyBaronOfHell : BaronOfHell {
   Dropitem "BlueMana", 256
   Dropitem "BlueHeroMana", 256
 	+QUICKTORETALIATE
+  var int user_healthbarid;
 	states {
 		Spawn:
 			BOSS A 0

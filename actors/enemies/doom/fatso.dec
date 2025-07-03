@@ -7,6 +7,7 @@ actor ZEnemyFatso : Fatso {
 	+QUICKTORETALIATE
   Dropitem "BlueMana", 256
   Dropitem "BlueHeroMana", 256
+  var int user_healthbarid;
 	states {
 		Spawn:
 			FATT A 0
