@@ -105,7 +105,7 @@ actor RailRevenantZSpawner : CustomMonsterInvasionSpot 16015
 	radius 20
 	height 56
 	//$Category ZInvasion Spawners
-	//$Sprite RASKA2D8
+	//$Sprite RASKA2
 	//$Title Rail Revenant
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns

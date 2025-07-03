@@ -122,7 +122,7 @@ actor DiscipleZSpawner : CustomMonsterInvasionSpot 16018
 	radius 16
 	height 68
 	//$Category ZInvasion Spawners
-	//$Sprite WZRDA2
+	//$Sprite WZRDA2A8
 	//$Title Disciple
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
@@ -136,7 +136,7 @@ actor GhostDiscipleZSpawner : CustomMonsterInvasionSpot 16021 {
 	radius 16
 	height 68
 	//$Category ZInvasion Spawners
-	//$Sprite WZRDA2
+	//$Sprite WZRDC2C8
 	//$Title Ghost Disciple
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
