@@ -130,4 +130,16 @@ actor DiscipleZSpawner : CustomMonsterInvasionSpot 16018
 	//$Arg4 Maximum amount spawned
 }
 
-actor GhostDiscipleZSpawner : CustomMonsterInvasionSpot 16021
+actor GhostDiscipleZSpawner : CustomMonsterInvasionSpot 16021 {
+	dropitem "ZEnemyGhostDisciple"
+	radius 16
+	height 68
+	//$Category ZInvasion Spawners
+	//$Sprite WZRDA2
+	//$Title Ghost Disciple
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
