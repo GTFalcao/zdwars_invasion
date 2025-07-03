@@ -19,5 +19,6 @@
 #include "actors/enemies/heretic/disciple.dec"
 #include "actors/enemies/heretic/undeadknight.dec"
 #include "actors/enemies/heretic/weredragon.dec"
+#include "actors/enemies/heretic/sabreclaw.dec"
 
 actor ImDefinitelyAPlayer : Inventory { inventory.maxamount 1 }

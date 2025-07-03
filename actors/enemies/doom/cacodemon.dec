@@ -2,7 +2,7 @@
 actor ZEnemyCacodemon : Cacodemon {
 	species "ZInvEnemy"
 	bloodcolor "gold"
-	translation "192:207=160:167", "0:0=167:167", "112:127=160:167", "240:247=164:167", "16:47=112:127", "168:191=112:127"
+	translation "16:47=[0,255,255]:[8,23,23]", "173:191=[128,0,128]:[8,0,8]", "112:127=176:191", "192:207=160:167"
 	painchance 75
 	meleerange 84
 	mass 800
