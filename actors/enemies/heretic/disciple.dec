@@ -6,8 +6,6 @@ actor ZEnemyDisciple : Wizard {
   mass 200
 	painchance 40
 	+QUICKTORETALIATE
-  Obituary "%o was cursed by a Disciple."
-  HitObituary "%o was palpated by a Disciple."
 	Dropitem "GreenMana", 256
 	Dropitem "GreenHeroMana", 256
   Dropitem "ZArtiInvisibility", 4
