@@ -1,22 +1,21 @@
 
-episode zdwinv01 { name = "ZDW Invasion" }
+episode ZDWINV6 { name = "ZDW Invasion" }
 
-map zdwinv01 "Dunno if this works"
-{
-music = "ZINVMUS1"
-next = "zdwinv01"
-sky1 = "SKY3"
+map ZDWINV6 "DOOMCITY Outskirts" {
+    sky1 = "STORMY", 0.4
+    aircontrol = 0.4
+    music = "music/zdwinv6_1.ogg"
+    next = "ZDWINV17"
+    lightning
 }
 
-map ZDWINV17 "The Flame Temple"
-{
-sky1 = "SKY_F001"
-music = "ZDWARS17"
-next = "ZDWINV17"
-aircontrol = 0.4
+map ZDWINV17 "The Flame Temple" {
+    sky1 = "SKY_F001"
+    music = "ZDWARS17"
+    next = "ZDWINV6"
+    aircontrol = 0.4
 }
 
-GameInfo
-{
+GameInfo {
     ForceSpawnEventScripts = true
 }

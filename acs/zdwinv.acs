@@ -81,9 +81,9 @@ script "sudden death respawn" respawn {
 }
 
 
-// tag 172 to spawn only for 2+ players
-// tag 173 to spawn only for 3+ players
-// tag 174 to spawn only for 4+ players
+// spawn only for 2+ players: 174, 175, 176, 177, 178, 179
+// spawn only for 3+ players: 173, 180, 181, 182, 183, 184
+// spawn only for 4+ players: 172, 185, 186, 187, 188, 189
 script "invasion spawner scaling and timer" open {
 	suddenDeath = false;
 	while((GetInvasionState() != IS_FIRSTCOUNTDOWN))
@@ -97,10 +97,30 @@ script "invasion spawner scaling and timer" open {
 
 	if (amountPlayers < 4) {
 		Thing_Remove(174);
+
+		Thing_Remove(185);
+		Thing_Remove(186);
+		Thing_Remove(187);
+		Thing_Remove(188);
+		Thing_Remove(189);
+
 		if (amountPlayers < 3) {
 			Thing_Remove(173);
+
+			Thing_Remove(180);
+			Thing_Remove(181);
+			Thing_Remove(182);
+			Thing_Remove(183);
+			Thing_Remove(184);
+			
 			if (amountPlayers < 2) {
 				Thing_Remove(172);
+
+				Thing_Remove(175);
+				Thing_Remove(176);
+				Thing_Remove(177);
+				Thing_Remove(178);
+				Thing_Remove(179);
 			}
 		}
 	}
@@ -110,7 +130,7 @@ script "invasion spawner scaling and timer" open {
 
 	int timelimit = GetCVar("timelimit");
 	if (timelimit >= 65536) timelimit >>= 16;
-	if (timelimit < 30 || timelimit > 120) timelimit = 6;
+	if (timelimit < 30 || timelimit > 180) timelimit = 90;
 
 	Delay (35 * 60 * (timelimit - 5));
 	

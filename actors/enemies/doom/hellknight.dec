@@ -49,13 +49,18 @@ actor ZEnemyHellKnight : HellKnight {
 	}
 }
 
+actor ZEnemyGhostHellKnight : ZEnemyHellKnight {
+  +GHOST
+  renderstyle translucent
+  alpha 0.5
+}
+
 actor ZEnemyKnightBall : ZEnemyBaronBall {
 	damage 8
 	+THRUGHOST
 }
 
-actor HellKnightZSpawner : CustomMonsterInvasionSpot 16009
-{
+actor HellKnightZSpawner : CustomMonsterInvasionSpot 16009 {
 	dropitem "ZEnemyHellKnight"
 	radius 24
 	height 64
@@ -67,4 +72,18 @@ actor HellKnightZSpawner : CustomMonsterInvasionSpot 16009
 	//$Arg2 Delay until first spawn
 	//$Arg3 Starts spawning in wave
 	//$Arg4 Maximum amount spawned
-} 
+}
+
+actor GhostHellKnightZSpawner : CustomMonsterInvasionSpot 16030 {
+	dropitem "ZEnemyGhostHellKnight"
+	radius 24
+	height 64
+	//$Category ZInvasion Spawners
+	//$Sprite BOS2F2
+	//$Title Ghost Hell Knight
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}

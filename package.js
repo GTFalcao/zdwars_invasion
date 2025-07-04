@@ -4,6 +4,7 @@ const filesToInclude = [
   'acs/',
   'actors/',
   'maps/',
+  'music/',
   'CMPGNINF.txt',
   'DECORATE.dec',
   'LOADACS.txt',

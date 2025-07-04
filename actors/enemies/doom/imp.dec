@@ -50,14 +50,33 @@ actor ZEnemyImp : DoomImp {
 	}
 }
 
-actor ImpZSpawner : CustomMonsterInvasionSpot 16001
-{
+actor ZEnemyGhostImp : ZEnemyImp {
+  +GHOST
+  renderstyle translucent
+  alpha 0.5
+}
+
+actor ImpZSpawner : CustomMonsterInvasionSpot 16001 {
 	dropitem "ZEnemyImp"
 	radius 20
 	height 56
 	//$Category ZInvasion Spawners
 	//$Sprite TROOA2A8
 	//$Title Imp
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
+
+actor GhostImpZSpawner : CustomMonsterInvasionSpot 16031 {
+	dropitem "ZEnemyGhostImp"
+	radius 20
+	height 56
+	//$Category ZInvasion Spawners
+	//$Sprite TROOF2F8
+	//$Title Ghost Imp
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
 	//$Arg2 Delay until first spawn
