@@ -1,6 +1,5 @@
 actor ZEnemySabreclaw : Clink {
 	species "ZInvEnemy"
-	bloodcolor "darkblue"
   translation "0:255=%[0,0,0]:[0.20,0.20,0.90]"
 	health 220
   mass 200

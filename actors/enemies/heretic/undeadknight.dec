@@ -1,6 +1,7 @@
 actor ZEnemyUndeadKnight : Knight {
 	species "ZInvEnemy"
 	bloodcolor "darkblue"
+  bloodtype hblood
   translation "0:255=%[0,0,0]:[0.20,0.20,0.90]"
 	health 330
   mass 250

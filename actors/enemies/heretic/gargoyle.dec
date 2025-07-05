@@ -1,0 +1,133 @@
+actor ZEnemyGargoyle : HereticImp {
+	species "ZInvEnemy"
+	bloodcolor "darkblue"
+  bloodtype hblood
+  translation "0:255=%[0,0,0]:[0.20,0.20,0.90]"
+	health 75
+  Meleerange 46
+	+QUICKTORETALIATE
+	Dropitem "GreenMana", 256
+	Dropitem "GreenHeroMana", 256
+  Damagefactor "Sniper", 1.5
+  Damagefactor "Suppression2", 1.3
+  var int user_healthbarid;
+	states {
+		Spawn:
+			IMPX A 0
+		Idle:
+			IMPX A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		IdleQuiet:
+			IMPX A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			IMPX ABCB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
+		ClearTarget:
+			IMPX A 0 A_ClearTarget
+			goto IdleQuiet
+		See:
+			IMPX AABB 3 A_Chase
+			IMPX A 0 A_SpawnItemEx("WingFlapLowTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			IMPX CCBBAABB 3 A_Chase
+			IMPX A 0 A_SpawnItemEx("WingFlapLowTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			IMPX CCBB 3 A_Chase
+			IMPX A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			IMPX A 0 A_JumpIfTargetInLOS("See")
+			IMPX A 0 A_Jump(64, "ClearTarget")
+			loop
+		Melee:
+			IMPX DE 6 A_FaceTarget
+			IMPX F 6 A_CustomMeleeAttack(random(4, 8), "himp/attack", "himp/attack")
+			goto See
+		Pain:
+			IMPX G 3
+			IMPX G 3 A_Pain
+			goto See
+		Raise:
+			stop
+	}
+}
+
+actor ZEnemyGhostGargoyle : ZEnemyGargoyle {
+  +GHOST
+  renderstyle translucent
+  alpha 0.5
+}
+
+actor ZEnemyFireGargoyle : ZEnemyGargoyle {
+  health 55
+	-MISSILEMORE
+	states {
+  Melee:
+    Stop
+  Missile:
+    IMPX DE 6 A_FaceTarget
+    IMPX F 6 A_CustomComboAttack("ZHereticImpBall", 32, random(4, 8), "himp/leaderattack")
+    Goto See
+	}
+}
+
+actor ZEnemyGhostFireGargoyle : ZEnemyFireGargoyle {
+  +GHOST
+  renderstyle translucent
+  alpha 0.5
+}
+
+actor GargoyleZSpawner : CustomMonsterInvasionSpot 16028
+{
+	dropitem "ZEnemyGargoyle"
+	radius 16
+	height 36
+	//$Category Heretic ZInvasion Spawners
+	//$Sprite IMPXA2A8
+	//$Title Gargoyle
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
+
+actor ZEnemyFireGargoyleZSpawner : CustomMonsterInvasionSpot 16030
+{
+	dropitem "ZEnemyFireGargoyle"
+	radius 16
+	height 36
+	//$Category Heretic ZInvasion Spawners
+	//$Sprite IMPXF2
+	//$Title Fire Gargoyle
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
+
+actor ZEnemyGhostGargoyleSpawner : CustomMonsterInvasionSpot 16031
+{
+	dropitem "ZEnemyGhostGargoyle"
+	radius 16
+	height 36
+	//$Category Heretic ZInvasion Spawners
+	//$Sprite IMPXC2C8
+	//$Title Ghost Gargoyle
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
+
+actor ZEnemyGhostFireGargoyleSpawner : CustomMonsterInvasionSpot 16032
+{
+	dropitem "ZEnemyGhostFireGargoyle"
+	radius 16
+	height 36
+	//$Category Heretic ZInvasion Spawners
+	//$Sprite IMPXE2
+	//$Title Ghost Fire Gargoyle
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
