@@ -1,0 +1,169 @@
+actor ZEnemyMaulotaur {
+  Health 4400
+  Mass 4000
+  Height 100
+  Radius 32
+  Speed 16
+  Meleerange 120
+  meleethreshold 200
+  Painchance 8
+  Damagefactor "Annihilate", 0
+  Damagefactor "Ridiculous", 0.6
+  SeeSound "minotaur/sight"
+  AttackSound "minotaur/attack1"
+  PainSound "minotaur/pain"
+  DeathSound "minotaur/death"
+  ActiveSound "minotaur/active"
+  Monster
+  +BOSS
+  +FLOORCLIP
+  +DONTMORPH
+  +NODROPOFF
+  +NOICEDEATH
+  +QUICKTORETALIATE
+  +MISSILEMORE
+  +NORADIUSDMG
+  +DONTRIP
+  +DONTHARMSPECIES
+  Bloodtype hblood
+  Dropitem "RedMana", 256
+  Dropitem "RedHeroMana", 256
+  Dropitem "ZArtiInvisibility", 160
+  Obituary "%o was burnt to a crisp by a Maulotaur."
+  HitObituary "%o was crushed by a Maulotaur."
+  var int user_healthbarid;
+  Tag "Maulotaur"
+	states {
+		Spawn:
+			MNTR A 0
+		Idle:
+      MNTR A 0 A_UnSetInvulnerable
+			MNTR A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			MNTR AB 10 A_Look
+      goto Idle+1
+		IdleQuiet:
+			MNTR A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			MNTR AB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
+		ClearTarget:
+			MNTR A 0 A_ClearTarget
+			goto IdleQuiet
+		See:
+      MNTR A 0 A_TakeInventory("Hammercheck", 1)
+      MNTR A 0 A_UnSetInvulnerable
+      MNTR A 0 A_SpawnItemEx("XBStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+      MNTR AB 5 A_Chase
+      MNTR C 0 A_SpawnItemEx("XBStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+      MNTR CD 5 A_Chase
+      MNTR A 0 A_SpawnItemEx("XBStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+      MNTR AB 5 A_Chase
+      MNTR C 0 A_SpawnItemEx("XBStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+      MNTR CD 5 A_Chase
+      MNTR A 0 A_SpawnItemEx("XBStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+      MNTR AB 5 A_Chase
+      MNTR C 0 A_SpawnItemEx("XBStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+      MNTR CD 5 A_Chase
+			MNTR A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			MNTR A 0 A_JumpIfTargetInLOS("See")
+			MNTR A 0 A_Jump(128, "ClearTarget")
+			loop
+		Melee:
+      MNTR V 0 A_UnSetInvulnerable
+			MNTR V 6 A_FaceTarget
+			MNTR W 5 A_FaceTarget
+			MNTR X 7 A_CustomMeleeAttack(random(50,60))
+			goto See
+  Missile:
+    MNTR V 0 A_Jump(128, 2)
+    MNTR V 0 A_JumpIfCloser(1200, "Charge")
+    MNTR V 0 A_Jump(64, 2)
+    MNTR V 0 A_JumpIfCloser(600, "Charge")
+    MNTR V 0 A_Jump(128, 2)
+    MNTR V 0 A_JumpIfCloser(1200, "Hammer")
+    MNTR V 0 A_PlaySound("minotaur/attack2", CHAN_WEAPON)
+    MNTR V 10 A_FaceTarget
+    MNTR Y 4 A_FaceTarget
+    MNTR Z 0 A_CustomMissile("ZMinotaurFX1", 40, 0, 0)
+    MNTR Z 0 A_CustomMissile("ZMinotaurFX1", 40, 0, 2.8125)
+    MNTR Z 0 A_CustomMissile("ZMinotaurFX1", 40, 0, -2.8125)
+    MNTR Z 0 A_CustomMissile("ZMinotaurFX1", 40, 0, 5.625)
+    MNTR Z 9 A_CustomMissile("ZMinotaurFX1", 40, 0, -5.625)
+    Goto See
+  Hammer:
+    MNTR V 0 A_UnSetInvulnerable
+    MNTR V 0 A_PlaySound("minotaur/attack1", CHAN_WEAPON)
+    MNTR V 0 A_PlaySound("minotaur/attack3", CHAN_VOICE)
+    MNTR V 10 A_FaceTarget
+    MNTR W 7 A_FaceTarget 
+	MNTR W 0 A_PlaySound("minotaur/attack3", CHAN_AUTO)
+	MNTR X 0 A_PlaySound("minotaur/attack1", CHAN_AUTO)
+    MNTR X 12 A_CustomMissile("ZMinotaurFX2", 0, 0, 0)
+    MNTR X 0 A_JumpIfInventory("Hammercheck", 1, "See")
+	MNTR X 0 A_Jump(64, "See")
+  MNTR X 12 A_GiveInventory("Hammercheck", 1)
+    Goto Hammer
+  Charge:
+    MNTR U 0 A_GiveInventory("ZEnemyMaulotaurCharging", 17)
+    MNTR U 0 A_SetInvulnerable
+    MNTR U 0 A_FaceTarget
+    MNTR U 0 A_SkullAttack(13)
+  ChargeLoop:
+    MNTR U 0 A_TakeInventory("ZEnemyMaulotaurCharging", 1)
+    MNTR U 2 A_SpawnItemEx("NewMinoPuff",0,0,0,0,0,2)
+    MNTR U 0 A_JumpIf(z - floorz >= 15, "ChargeStop")
+    MNTR U 0 A_JumpIfInventory("ZEnemyMaulotaurCharging", 1, "ChargeLoop")
+  ChargeStop:
+    MNTR A 0 A_Stop
+    goto See
+		Pain:
+			MNTR E 2
+			MNTR E 4 A_Pain
+			goto See
+		Death:
+			MNTR F 6
+			MNTR G 6 A_Scream
+			MNTR HIJKL 6
+			MNTR M 5 A_NoBlocking
+			MNTR NOPQRS 5
+			MNTR T -1
+			stop
+	}
+}
+
+actor ZEnemyMaulotaurCharging : Inventory { inventory.maxamount 17 }
+
+actor ZEnemyGhostMaulotaur : ZEnemyMaulotaur {
+	+GHOST
+	renderstyle translucent
+	alpha 0.5
+}
+
+actor MaulotaurZSpawner : CustomMonsterInvasionSpot 16038
+{
+	dropitem "ZEnemyMaulotaur"
+	radius 32
+	height 100
+	//$Category ZInvasion Spawners
+	//$Sprite MNTRA2
+	//$Title Maulotaur
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
+
+actor GhostMaulotaurZSpawner : CustomMonsterInvasionSpot 16039
+{
+	dropitem "ZEnemyGhostMaulotaur"
+	radius 32
+	height 100
+	//$Category ZInvasion Spawners
+	//$Sprite MNTRV2
+	//$Title Ghost Maulotaur
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+} 

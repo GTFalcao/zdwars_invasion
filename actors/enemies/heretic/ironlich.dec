@@ -1,0 +1,88 @@
+actor ZEnemyIronLich : Ironlich {
+	species "ZInvEnemy"
+  translation "0:255=%[0,0,0]:[0.20,0.20,0.90]"
+	health 3750
+  mass 2500
+  painchance 8
+	+QUICKTORETALIATE
+  +MISSILEMORE
+  +DONTRIP
+  +NOICEDEATH
+  +NORADIUSDMG
+  +NODROPOFF
+  +DONTHARMSPECIES
+  Dropitem "RedMana", 256
+  Dropitem "RedHeroMana", 256
+  Dropitem "ZArtiInvisibility", 160
+  Damagefactor "Annihilate", 0
+  Damagefactor "Ridiculous", 0.6
+	var int user_healthbarid;
+	states {
+		Spawn:
+			LICH A 0
+		Idle:
+			LICH A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		IdleQuiet:
+			LICH A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			LICH A 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
+		ClearTarget:
+			LICH A 0 A_ClearTarget
+			goto IdleQuiet
+		See:
+			LICH AAAAAAAAAAAAAAAA 3 A_Chase
+			LICH A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			LICH A 0 A_JumpIfTargetInLOS("See")
+			LICH A 0 A_Jump(128, "ClearTarget")
+			loop
+    Melee:
+		Missile:
+			LICH A 5 A_FaceTarget
+			LICH B 20 A_LichAttack
+			goto See
+		Pain:
+			LICH A 3
+			LICH A 3 A_Pain
+			goto See
+		Death:
+		Raise:
+			stop
+	}
+}
+
+actor ZEnemyGhostIronLich : ZEnemyIronLich {
+	+GHOST
+	renderstyle translucent
+	alpha 0.5
+}
+
+actor IronLichZSpawner : CustomMonsterInvasionSpot 16036
+{
+	dropitem "ZEnemyIronLich"
+	radius 40
+	height 72
+	//$Category ZInvasion Spawners
+	//$Sprite LICHA2A8
+	//$Title Iron Lich
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
+
+actor GhostIronLichZSpawner : CustomMonsterInvasionSpot 16037
+{
+	dropitem "ZEnemyGhostIronLich"
+	radius 40
+	height 72
+	//$Category ZInvasion Spawners
+	//$Sprite LICHB2B8
+	//$Title Ghost Iron Lich
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
