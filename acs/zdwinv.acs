@@ -53,48 +53,14 @@ script "hate something new" (void) {
 
 bool suddenDeath = false;
 
-script "sudden death enter" enter {
+script "definitely an enter script" enter {
 	GiveInventory("ImDefinitelyAPlayer", 1);
-
-	while (!suddenDeath) {
-		Delay(100);
-	}
-
-	int counter = 0;
-	while (GetActorProperty(0, APROP_Health) > 0) {
-		Delay(32);
-		DamageThing(++counter, MOD_POISON);
-	}
 }
-script "sudden death respawn" respawn {
+script "definitely a respawn script" respawn {
 	GiveInventory("ImDefinitelyAPlayer", 1);
-
-	while (!suddenDeath) {
-		Delay(100);
-	}
-
-	int counter = 0;
-	while (GetActorProperty(0, APROP_Health) > 0) {
-		Delay(32);
-		DamageThing(++counter, MOD_POISON);
-	}
 }
 
-
-// spawn only for 2+ players: 174, 175, 176, 177, 178, 179
-// spawn only for 3+ players: 173, 180, 181, 182, 183, 184
-// spawn only for 4+ players: 172, 185, 186, 187, 188, 189
-script "invasion spawner scaling and timer" open {
-	suddenDeath = false;
-	while((GetInvasionState() != IS_FIRSTCOUNTDOWN))
-    Delay(20);
-
-	Delay(35 * (GetCVar("sv_invasioncountdowntime") - 1));
-
-	int amountPlayers = PlayerCount();
-
-	PrintBold(s:"Invasion difficulty set for \cv",i:amountPlayers,s: " players");
-
+function void removeSpawners(int amountPlayers) {
 	if (amountPlayers < 4) {
 		Thing_Remove(174);
 
@@ -124,39 +90,38 @@ script "invasion spawner scaling and timer" open {
 			}
 		}
 	}
+}
 
-	// only enable sudden death if sv_maxlives is set
-	if (!GetCVar("sv_maxlives")) terminate;
 
-	int timelimit = GetCVar("timelimit");
-	if (timelimit >= 65536) timelimit >>= 16;
-	if (timelimit < 30 || timelimit > 180) timelimit = 90;
+// spawn only for 2+ players: 174, 175, 176, 177, 178, 179
+// spawn only for 3+ players: 173, 180, 181, 182, 183, 184
+// spawn only for 4+ players: 172, 185, 186, 187, 188, 189
+script "invasion spawner scaling and timer" open {
+	suddenDeath = false;
+	while((GetInvasionState() != IS_FIRSTCOUNTDOWN)) {
+    Delay(20);
+	}
 
-	Delay (35 * 60 * (timelimit - 5));
-	
-	AmbientSound("announcer/5cp/fiveminutewarning", 127);
+	Delay(35 * (GetCVar("sv_invasioncountdowntime") - 1));
 
-	PrintBold(s:"Sudden death begins in 5 minutes!");
+	int originalAmountPlayers = PlayerCount();
 
-	Delay(35 * 60 * 4);
+	PrintBold(s:"Invasion difficulty set for \cv",i:originalAmountPlayers,s: " players");
+	removeSpawners(originalAmountPlayers);
 
-	AmbientSound("announcer/5cp/oneminutewarning", 127);
+	while (true) {
+		while((GetInvasionState() != IS_COUNTDOWN)) {
+			Delay(100);
+		}
 
-	PrintBold(s:"Sudden death begins in 1 minute!");
+		int amountPlayers = PlayerCount();
+		if (amountPlayers < originalAmountPlayers) {
+			PrintBold(s:"Invasion difficulty adjusted for \cv",i:amountPlayers,s: " players");
+			removeSpawners(amountPlayers);
+		}
 
-	Delay(35 * 60);
-
-	PrintBold(s:"Sudden death!");
-	AmbientSound("announcer/5cp/five", 127);
-	Delay(35);
-	AmbientSound("announcer/5cp/four", 127);
-	Delay(35);
-	AmbientSound("announcer/5cp/three", 127);
-	Delay(35);
-	AmbientSound("announcer/5cp/two", 127);
-	Delay(35);
-	AmbientSound("announcer/5cp/one", 127);
-	Delay(50);
-
-	suddenDeath = true;
+		while((GetInvasionState() != IS_INPROGRESS)) {
+			Delay(100);
+		}
+	}
 }
