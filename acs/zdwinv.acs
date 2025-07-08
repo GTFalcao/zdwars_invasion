@@ -92,6 +92,28 @@ function void removeSpawners(int amountPlayers) {
 	}
 }
 
+// if you're using dsparil (or some other multi-spawn monster), have a mapspot with this id
+// and make sure there's at least one 64x64 block to its right (west) for each extra dummy
+int dsparilDummyMapspotId = 170;
+
+int dsparilDummyTid = -500;
+script "spawn a dummy for me" (void) {
+	int x = GetActorX(dsparilDummyMapspotId);
+	int y = GetActorY(dsparilDummyMapspotId);
+	int z = GetActorZ(dsparilDummyMapspotId);
+	while (Spawn("DummyInvasionMonster", x, y, z, dsparilDummyTid) == 0) {
+		x += 64.0;
+		Delay(5);
+	}
+
+
+	dsparilDummyTid--;
+}
+
+script "a wild soract666 appeared" (void) {
+	Thing_Remove(++dsparilDummyTid);
+}
+
 
 // spawn only for 2+ players: 174, 175, 176, 177, 178, 179
 // spawn only for 3+ players: 173, 180, 181, 182, 183, 184

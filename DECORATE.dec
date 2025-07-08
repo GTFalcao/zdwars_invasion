@@ -24,5 +24,23 @@
 #include "actors/enemies/heretic/ironlich.dec"
 #include "actors/enemies/heretic/gargoyle.dec"
 #include "actors/enemies/heretic/golem.dec"
+#include "actors/enemies/heretic/dsparil.dec"
 
 actor ImDefinitelyAPlayer : Inventory { inventory.maxamount 1 }
+
+actor DummyInvasionMonster {
+  health 666666
+  +NOBLOCKMAP
+  +ISMONSTER
+  +NEVERTARGET
+  +COUNTKILL
+  states {
+    Spawn:
+      TNT1 A -1
+      stop
+    Death:
+      TNT1 A 1
+      TNT1 A -1 A_Fall
+      stop
+  }
+}

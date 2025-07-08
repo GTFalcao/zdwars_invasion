@@ -1,0 +1,199 @@
+actor ZEnemySorcerer1 : Sorcerer1 {
+	species "ZInvEnemy"
+	translation "0:255=%[0,0,0]:[0.20,0.20,0.90]"
+	health 4000
+	mass 4500
+	radius 32
+	painchance 4
+	-NOTARGET
+	+QUICKTORETALIATE
+	+MISSILEMORE
+	+DONTRIP
+	+NODROPOFF
+	Damagefactor "Annihilate", 0
+	Damagefactor "Ridiculous", 0.6
+	var int user_healthbarid;
+	states {
+		Spawn:
+			SRCR A 0
+			SRCR A 0 ACS_NamedExecuteAlways("spawn a dummy for me", 0)
+		Idle:
+			SRCR A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		IdleQuiet:
+			SRCR A 0 ACS_NamedExecuteAlways("hate something new", 0)
+			SRCR AB 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
+		ClearTarget:
+			SRCR A 0 A_ClearTarget
+			goto IdleQuiet
+		See:
+			SRCR ABCDABCDABCDABCD 5 A_Sor1Chase
+			SRCR A 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			SRCR A 0 A_JumpIfTargetInLOS("See")
+			SRCR A 0 A_Jump(128, "ClearTarget")
+			loop
+		Pain:
+			SRCR Q 6 A_Sor1Pain
+			goto See
+		Missile:
+			SRCR Q 7 A_FaceTarget
+			SRCR R 6 A_FaceTarget
+			SRCR S 0 A_JumpIfHealthLower(2500, 2)
+			SRCR S 10 A_CustomMissile("ZSorcererFX1", 80, 0, 0)
+			goto See
+			SRCR S 0 A_CustomMissile("ZSorcererFX1", 80, 0, 3)
+			SRCR S 0 A_CustomMissile("ZSorcererFX1", 80, 0, -3)
+			SRCR S 0 A_CustomMissile("ZSorcererFX1", 80, 0, 0)
+			SRCR S 10 A_JumpIfHealthLower(1250, 1)
+			goto See
+			SRCR S 10 A_FaceTarget
+			SRCR Q 7 A_FaceTarget
+			SRCR R 6 A_FaceTarget
+			SRCR S 0 A_CustomMissile("ZSorcererFX1", 80, 0, 3)
+			SRCR S 0 A_CustomMissile("ZSorcererFX1", 80, 0, -3)
+			SRCR S 10 A_CustomMissile("ZSorcererFX1", 80, 0, 0)
+			goto See
+		Death:
+			SRCR E 7
+			SRCR F 7 A_Scream
+			SRCR G 7
+			SRCR HIJK 6
+			SRCR L 25 A_PlaySound("dsparil/zap", CHAN_BODY, 1, FALSE, ATTN_NONE)
+			SRCR MN 5
+			SRCR O 4
+			SRCR L 20 A_PlaySound("dsparil/zap", CHAN_BODY, 1, FALSE, ATTN_NONE)
+			SRCR MN 5
+			SRCR O 4
+			SRCR L 12
+			SRCR P -1 A_SorcererRise
+			stop
+		Raise:
+			stop
+	}
+}
+
+actor ZEnemySorcerer2 : Sorcerer2 replaces Sorcerer2 {
+	species "ZInvEnemy"
+	translation "0:255=%[0,0,0]:[0.20,0.20,0.90]"
+  Health 3000
+  Mass 4500
+	radius 24
+	painchance 4
+	+QUICKTORETALIATE
+	+MISSILEMORE
+	+DONTRIP
+	+NODROPOFF
+	+DONTHARMSPECIES
+	+INVULNERABLE
+	-DROPOFF
+	-FULLVOLACTIVE
+	-NOTARGET
+	Dropitem "RedMana", 256
+	Dropitem "RedHeroMana", 256
+	Dropitem "ZArtiInvisibility", 160
+	Damagefactor "Annihilate", 0
+	Damagefactor "Ridiculous", 0.6
+	var int user_healthbarid;
+	states {
+		Rise:
+			SOR2 A 4
+			SOR2 B 4 A_PlaySound("dsparil/rise", CHAN_BODY, 1, FALSE, ATTN_NONE)
+			SOR2 C 4 ACS_NamedExecuteAlways("a wild soract666 appeared", 0)
+			SOR2 DEF 4
+			SOR2 G 8 A_PlaySound("dsparil/sight", CHAN_VOICE, 1, FALSE, ATTN_NONE)
+			SOR2 G 4 A_UnSetInvulnerable
+		Spawn:
+			SOR2 M 0
+		Idle:
+			SOR2 M 0 ACS_NamedExecuteAlways("hate something new", 0)
+			goto Super::Spawn
+		IdleQuiet:
+			SOR2 M 0 ACS_NamedExecuteAlways("hate something new", 0)
+			SOR2 MN 10 A_LookEx(LOF_NOSEESOUND)
+			goto IdleQuiet+1
+		ClearTarget:
+			SOR2 M 0 A_ClearTarget
+			goto IdleQuiet
+		See:
+			SOR2 M 0 A_SpawnItemEx("XHRStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SOR2 MN 4 A_Chase
+			SOR2 O 0 A_SpawnItemEx("XHRStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SOR2 OP 4 A_Chase
+			SOR2 M 0 A_SpawnItemEx("XHRStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SOR2 MN 4 A_Chase
+			SOR2 O 0 A_SpawnItemEx("XHRStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SOR2 OP 4 A_Chase
+			SOR2 M 0 A_SpawnItemEx("XHRStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SOR2 MN 4 A_Chase
+			SOR2 O 0 A_SpawnItemEx("XHRStepHeroTier",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+			SOR2 OP 4 A_Chase
+			SOR2 M 0 A_JumpIfInTargetInventory("ImDefinitelyAPlayer", 1, "ClearTarget")
+			SOR2 M 0 A_JumpIfTargetInLOS("See")
+			SOR2 M 0 A_Jump(128, "ClearTarget")
+			loop
+		Pain:
+			SOR2 Q 3
+			SOR2 Q 6 A_Pain
+			goto See
+		Missile:
+			SOR2 R 3 A_FaceTarget
+			SOR2 R 5 A_PlaySound("dsparil/attack")
+			SOR2 S 8 A_FaceTarget
+			SOR2 T 0 A_JumpIfHealthLower(1500, 2)
+			SOR2 T 0 A_Jump(48, "Disciple")
+			goto FinishMissile
+			SOR2 T 0 A_Jump(96, "Disciple")
+		FinishMissile: 
+			SOR2 T 14 A_CustomMissile("ZSorcerer2FX1", 48, 0, 0)
+			goto See
+		Disciple:
+			SOR2 T 0 A_CustomMissile("ZEnemySorcerer2FX2", 48, 0, -45)
+			SOR2 T 14 A_CustomMissile("ZEnemySorcerer2FX2", 48, 0, 45)
+			goto See
+		Death:
+			SDTH A 2
+			SDTH A 6 A_PlaySound("dsparil/scream", CHAN_VOICE, 1, FALSE, ATTN_NONE)
+			SDTH BC 8
+			SDTH DEFDEFDEFDEFDEFDEFDEF 7
+			SDTH G 6 A_PlaySound("dsparil/explode", CHAN_VOICE)
+			SDTH H 6
+			SDTH I 18
+			SDTH J 6 A_NoBlocking
+			SDTH K 6 A_PlaySound("dsparil/bones", CHAN_BODY)
+			SDTH LMN 6
+			SDTH O -1 A_BossDeath
+			stop
+		Raise:
+			stop
+	}
+}
+
+actor ZEnemySorcerer2FX2 : ZSorcerer2FX2 {
+	reactiontime 6
+	states {
+		Spawn:
+			FX11 A 10
+			FX11 AAAAA 5 A_Countdown
+			FX11 B 5 BRIGHT A_Countdown
+		Death:
+			FX11 C 5 bright A_SpawnItemEx("ZEnemyDisciple")
+			FX11 DEFG 5 BRIGHT
+			stop
+	}
+}
+
+actor Sorcerer1ZSpawner : CustomMonsterInvasionSpot 16040
+{
+	dropitem "ZEnemySorcerer1"
+	radius 28
+	height 100
+	//$Category ZInvasion Spawners
+	//$Sprite SRCRA2
+	//$Title D'Sparil
+	//$Arg0 Minimum amount spawned
+	//$Arg1 Delay between spawns
+	//$Arg2 Delay until first spawn
+	//$Arg3 Starts spawning in wave
+	//$Arg4 Maximum amount spawned
+}
