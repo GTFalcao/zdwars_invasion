@@ -68,7 +68,7 @@ actor SabreclawZSpawner : CustomMonsterInvasionSpot 16026
 	dropitem "ZEnemySabreclaw"
 	radius 20
 	height 64
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite CLNKA2
 	//$Title Sabreclaw
 	//$Arg0 Minimum amount spawned
@@ -82,7 +82,7 @@ actor GhostSabreclawZSpawner : CustomMonsterInvasionSpot 16029 {
   dropitem "ZEnemyGhostSabreclaw"
   radius 20
   height 64
-  //$Category ZInvasion Spawners
+  //$Category Heretic ZInvasion Spawners
   //$Sprite CLNKF2
   //$Title Ghost Sabreclaw
   //$Arg0 Minimum amount spawned

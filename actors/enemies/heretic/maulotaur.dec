@@ -142,7 +142,7 @@ actor MaulotaurZSpawner : CustomMonsterInvasionSpot 16038
 	dropitem "ZEnemyMaulotaur"
 	radius 32
 	height 100
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite MNTRA2
 	//$Title Maulotaur
 	//$Arg0 Minimum amount spawned
@@ -157,7 +157,7 @@ actor GhostMaulotaurZSpawner : CustomMonsterInvasionSpot 16039
 	dropitem "ZEnemyGhostMaulotaur"
 	radius 32
 	height 100
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite MNTRV2
 	//$Title Ghost Maulotaur
 	//$Arg0 Minimum amount spawned

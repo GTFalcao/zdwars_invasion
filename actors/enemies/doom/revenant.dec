@@ -89,7 +89,7 @@ actor RevenantZSpawner : CustomMonsterInvasionSpot 16012
 	dropitem "ZEnemyRevenant"
 	radius 20
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite SKELA2D8
 	//$Title Revenant
 	//$Arg0 Minimum amount spawned
@@ -104,7 +104,7 @@ actor RailRevenantZSpawner : CustomMonsterInvasionSpot 16015
 	dropitem "ZEnemyRailRevenant"
 	radius 20
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite RASKA2
 	//$Title Rail Revenant
 	//$Arg0 Minimum amount spawned

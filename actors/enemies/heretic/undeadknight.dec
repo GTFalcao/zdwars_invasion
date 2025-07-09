@@ -80,7 +80,7 @@ actor UndeadKnightZSpawner : CustomMonsterInvasionSpot 16019
 	dropitem "ZEnemyUndeadKnight"
 	radius 24
 	height 78
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite KNIGA2
 	//$Title Undead Knight
 	//$Arg0 Minimum amount spawned
@@ -94,7 +94,7 @@ actor GhostUndeadKnightZSpawner : CustomMonsterInvasionSpot 16025 {
   dropitem "ZEnemyGhostUndeadKnight"
   radius 24
   height 78
-  //$Category ZInvasion Spawners
+  //$Category Heretic ZInvasion Spawners
   //$Sprite KNIGF2
   //$Title Ghost Undead Knight
   //$Arg0 Minimum amount spawned

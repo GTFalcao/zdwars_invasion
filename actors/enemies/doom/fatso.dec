@@ -59,7 +59,7 @@ actor FatsoZSpawner : CustomMonsterInvasionSpot 16008
 	dropitem "ZEnemyFatso"
 	radius 48
 	height 64
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite FATTA2A8
 	//$Title Mancubus
 	//$Arg0 Minimum amount spawned
@@ -74,7 +74,7 @@ actor GhostFatsoZSpawner : CustomMonsterInvasionSpot 16005
 	dropitem "ZEnemyGhostFatso"
 	radius 48
 	height 64
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite FATTG2G8
 	//$Title Ghost Mancubus
 	//$Arg0 Minimum amount spawned

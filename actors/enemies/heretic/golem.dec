@@ -98,7 +98,7 @@ actor GolemZSpawner : CustomMonsterInvasionSpot 16027
 	dropitem "ZEnemyGolem"
 	radius 22
 	height 62
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite MUMMA2A8
 	//$Title Golem
 	//$Arg0 Minimum amount spawned
@@ -112,9 +112,9 @@ actor GhostGolemZSpawner : CustomMonsterInvasionSpot 16033 {
 	dropitem "ZEnemyGhostGolem"
 	radius 22
 	height 62
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite MUMMG2
-	//$Title Golem
+	//$Title Ghost Golem
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
 	//$Arg2 Delay until first spawn
@@ -127,9 +127,9 @@ actor NitroGolemZSpawner : CustomMonsterInvasionSpot 16034
 	dropitem "ZEnemyNitroGolem"
 	radius 22
 	height 62
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite MUMAA2A8
-	//$Title Nitro Golem
+	//$Title NitroGolem
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
 	//$Arg2 Delay until first spawn
@@ -142,9 +142,9 @@ actor GhostNitroGolemZSpawner : CustomMonsterInvasionSpot 16035
 	dropitem "ZEnemyGhostNitroGolem"
 	radius 22
 	height 62
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite MUMAX2X8
-	//$Title Nitro Golem
+	//$Title Ghost NitroGolem
 	//$Arg0 Minimum amount spawned
 	//$Arg1 Delay between spawns
 	//$Arg2 Delay until first spawn

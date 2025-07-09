@@ -60,7 +60,7 @@ actor ImpZSpawner : CustomMonsterInvasionSpot 16001 {
 	dropitem "ZEnemyImp"
 	radius 20
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite TROOA2A8
 	//$Title Imp
 	//$Arg0 Minimum amount spawned
@@ -74,7 +74,7 @@ actor GhostImpZSpawner : CustomMonsterInvasionSpot 16031 {
 	dropitem "ZEnemyGhostImp"
 	radius 20
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite TROOF2F8
 	//$Title Ghost Imp
 	//$Arg0 Minimum amount spawned

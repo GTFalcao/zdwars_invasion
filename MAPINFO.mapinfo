@@ -2,18 +2,25 @@
 episode ZDWINV6 { name = "ZDW Invasion" }
 
 map ZDWINV6 "DOOMCITY Outskirts" {
-    sky1 = "STORMY", 0.4
     aircontrol = 0.4
     music = "music/zdwinv6_1.ogg"
-    next = "ZDWINV17"
+    next = "ZDWINV13"
+    sky1 = "STORMY", 0.4
     lightning
 }
 
+map ZDWINV13 "Turmoil" {
+    aircontrol = 0.4
+    music = "ZDWARS13"
+    next = "ZDWINV17"
+    sky1 = "STSKY1", 0.1
+}
+
 map ZDWINV17 "The Flame Temple" {
-    sky1 = "SKY_F001"
+    aircontrol = 0.4
     music = "ZDWARS17"
     next = "ZDWINV6"
-    aircontrol = 0.4
+    sky1 = "SKY_F001"
 }
 
 GameInfo {

@@ -121,7 +121,7 @@ actor DiscipleZSpawner : CustomMonsterInvasionSpot 16018
 	dropitem "ZEnemyDisciple"
 	radius 16
 	height 68
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite WZRDA2A8
 	//$Title Disciple
 	//$Arg0 Minimum amount spawned
@@ -135,7 +135,7 @@ actor GhostDiscipleZSpawner : CustomMonsterInvasionSpot 16021 {
 	dropitem "ZEnemyGhostDisciple"
 	radius 16
 	height 68
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite WZRDC2C8
 	//$Title Ghost Disciple
 	//$Arg0 Minimum amount spawned

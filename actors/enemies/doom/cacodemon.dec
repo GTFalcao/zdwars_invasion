@@ -54,7 +54,7 @@ actor CacodemonZSpawner : CustomMonsterInvasionSpot 16002
 	dropitem "ZEnemyCacodemon"
 	radius 31
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite HEADA2A8
 	//$Title Cacodemon
 	//$Arg0 Minimum amount spawned

@@ -59,7 +59,7 @@ actor DemonZSpawner : CustomMonsterInvasionSpot 16003
 	dropitem "ZEnemyDemon"
 	radius 30
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite SARGA2A8
 	//$Title Demon
 	//$Arg0 Minimum amount spawned

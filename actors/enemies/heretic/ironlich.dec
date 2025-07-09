@@ -4,6 +4,7 @@ actor ZEnemyIronLich : Ironlich {
 	health 3750
   mass 2500
   painchance 8
+	+BOSS
 	+QUICKTORETALIATE
   +MISSILEMORE
   +DONTRIP
@@ -45,7 +46,6 @@ actor ZEnemyIronLich : Ironlich {
 			LICH A 3
 			LICH A 3 A_Pain
 			goto See
-		Death:
 		Raise:
 			stop
 	}
@@ -62,7 +62,7 @@ actor IronLichZSpawner : CustomMonsterInvasionSpot 16036
 	dropitem "ZEnemyIronLich"
 	radius 40
 	height 72
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite LICHA2A8
 	//$Title Iron Lich
 	//$Arg0 Minimum amount spawned
@@ -77,7 +77,7 @@ actor GhostIronLichZSpawner : CustomMonsterInvasionSpot 16037
 	dropitem "ZEnemyGhostIronLich"
 	radius 40
 	height 72
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite LICHB2B8
 	//$Title Ghost Iron Lich
 	//$Arg0 Minimum amount spawned

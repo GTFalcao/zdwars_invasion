@@ -11,7 +11,7 @@ actor SpectreZSpawner : CustomMonsterInvasionSpot 16013
 	dropitem "ZEnemySpectre"
 	radius 30
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite SARGA2A8
 	//$Title Spectre
 	//$Arg0 Minimum amount spawned

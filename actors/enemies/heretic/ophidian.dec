@@ -68,7 +68,7 @@ actor OphidianZSpawner : CustomMonsterInvasionSpot 16016
 	dropitem "ZEnemyOphidian"
 	radius 22
 	height 70
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite SNKEA2
 	//$Title Ophidian
 	//$Arg0 Minimum amount spawned
@@ -83,7 +83,7 @@ actor GhostOphidianZSpawner : CustomMonsterInvasionSpot 16017
 	dropitem "ZEnemyGhostOphidian"
 	radius 22
 	height 70
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite SNKEF2
 	//$Title Ghost Ophidian
 	//$Arg0 Minimum amount spawned

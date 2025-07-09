@@ -44,7 +44,7 @@ actor LostSoulZSpawner : CustomMonsterInvasionSpot 16010
 	dropitem "ZEnemyLostSoul"
 	radius 16
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite SKULA8A2
 	//$Title Lost Soul
 	//$Arg0 Minimum amount spawned

@@ -64,7 +64,7 @@ actor HellKnightZSpawner : CustomMonsterInvasionSpot 16009 {
 	dropitem "ZEnemyHellKnight"
 	radius 24
 	height 64
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite BOS2A2C8
 	//$Title Hell Knight
 	//$Arg0 Minimum amount spawned
@@ -78,7 +78,7 @@ actor GhostHellKnightZSpawner : CustomMonsterInvasionSpot 16030 {
 	dropitem "ZEnemyGhostHellKnight"
 	radius 24
 	height 64
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite BOS2F2
 	//$Title Ghost Hell Knight
 	//$Arg0 Minimum amount spawned

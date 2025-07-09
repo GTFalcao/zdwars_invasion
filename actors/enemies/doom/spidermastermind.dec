@@ -104,7 +104,7 @@ actor SpiderMastermindZSpawner : CustomMonsterInvasionSpot 16014
 	dropitem "ZEnemySpiderMastermind"
 	radius 90
 	height 100
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite SPIDA2A8
 	//$Title Spider Mastermind
 	//$Arg0 Minimum amount spawned

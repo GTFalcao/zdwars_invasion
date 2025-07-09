@@ -87,7 +87,7 @@ actor GargoyleZSpawner : CustomMonsterInvasionSpot 16028
 	//$Arg4 Maximum amount spawned
 }
 
-actor ZEnemyFireGargoyleZSpawner : CustomMonsterInvasionSpot 16030
+actor ZEnemyFireGargoyleZSpawner : CustomMonsterInvasionSpot 16041
 {
 	dropitem "ZEnemyFireGargoyle"
 	radius 16
@@ -102,7 +102,7 @@ actor ZEnemyFireGargoyleZSpawner : CustomMonsterInvasionSpot 16030
 	//$Arg4 Maximum amount spawned
 }
 
-actor ZEnemyGhostGargoyleSpawner : CustomMonsterInvasionSpot 16031
+actor ZEnemyGhostGargoyleSpawner : CustomMonsterInvasionSpot 16042
 {
 	dropitem "ZEnemyGhostGargoyle"
 	radius 16

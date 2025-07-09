@@ -82,7 +82,7 @@ actor PainElementalZSpawner : CustomMonsterInvasionSpot 16011
 	dropitem "ZEnemyPainElemental"
 	radius 31
 	height 56
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite PAINA2A8
 	//$Title Pain Elemental
 	//$Arg0 Minimum amount spawned

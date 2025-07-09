@@ -188,7 +188,7 @@ actor Sorcerer1ZSpawner : CustomMonsterInvasionSpot 16040
 	dropitem "ZEnemySorcerer1"
 	radius 28
 	height 100
-	//$Category ZInvasion Spawners
+	//$Category Heretic ZInvasion Spawners
 	//$Sprite SRCRA2
 	//$Title D'Sparil
 	//$Arg0 Minimum amount spawned

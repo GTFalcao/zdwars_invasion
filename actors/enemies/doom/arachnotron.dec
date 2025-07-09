@@ -56,7 +56,7 @@ actor ArachnotronZSpawner : CustomMonsterInvasionSpot 16004
 	dropitem "ZEnemyArachnotron"
 	radius 48
 	height 64
-	//$Category ZInvasion Spawners
+	//$Category Doom ZInvasion Spawners
 	//$Sprite BSPIA2A8
 	//$Title Arachnotron
 	//$Arg0 Minimum amount spawned
