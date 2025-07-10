@@ -1,7 +1,7 @@
 actor ZEnemyDemon : Demon {
 	species "ZInvEnemy"
 	bloodcolor "gold"
-  translation "16:31=200:207", "32:47=240:247", "208:223=192:207", "168:191=160:167"
+  translation "16:47=%[0.06,0.00,0.06]:[0.92,0.00,0.92]", "160:167=%[0.00,0.04,0.04]:[0.00,2.00,2.00]", "224:231=%[0.00,0.04,0.04]:[0.00,2.00,2.00]", "176:191=160:167"
 	health 180
 	painchance 20
   Damagefactor "Sniper", 1.5
