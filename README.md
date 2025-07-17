@@ -88,7 +88,7 @@ npm run build
 
 The built file will be in the `dist/` folder and ready to load in Zandronum.
 
-I recommend setting up a local server in Doomseeker loading the pk3 straight from this folder.
+I recommend setting up a local server loading the pk3 straight from this folder.
 
 
 ## 🧌 Adding New Monsters
