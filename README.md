@@ -40,7 +40,7 @@ Git is a version control system that tracks changes to files.
 https://git-scm.com/downloads
 
 #### 2. Node.js
-Node.js lets us run JavaScript outside the browser and includes npm (package manager).
+Installing Node.js will let you easily compile the ACS and build the pk3 from the command line
 - Download from [nodejs.org](https://nodejs.org/) (choose the LTS version)
 - This will also install npm automatically
 
